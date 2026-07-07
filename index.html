@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trades</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>{{SEO_TITLE}}</title>
+    <meta name="description" content="{{SEO_DESCRIPTION}}">
+    <meta name="keywords" content="{{SEO_KEYWORDS}}">
 
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
+    <meta property="og:title" content="{{SEO_TITLE}}">
+    <meta property="og:description" content="{{SEO_DESCRIPTION}}">
+    <meta property="og:image" content="{{SEO_IMAGE}}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="">
+    <meta property="og:url" content="{{SEO_URL}}">
     <meta name="twitter:card" content="summary_large_image">
 
     <script type="application/ld+json" id="seo-jsonld">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "CafeOrCoffeeShop",
         "name": "",
         "image": "",
         "telephone": "",
@@ -30,14 +30,14 @@
         },
         "url": "",
         "description": "",
-        "priceRange": "₱₱"
+        "priceRange": "₱"
     }
     </script>
 
-    <!-- Space Grotesk (strong technical display) + DM Sans (clean body) -->
+    <!-- Playfair Display (editorial headings) + DM Sans (modern body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
     <!-- ======================================================================= -->
     <!-- === EDIT HERE === -->
@@ -46,111 +46,128 @@
            Option A (manual): Edit SITE_CONFIG below. Save, open in browser.
            Option B (automated): Fill config.json, run: node replace.js
 
-         DUAL-TRADE SUPPORT:
-           Plumber     → bg #F9F7F4 warm white, accent #B84B2A terracotta (default)
-           Electrician → bg #F3F6FB cool white, text #14213D navy, accent #1D4ED8 electric blue
-           Set THEME_COLOR_* tokens accordingly.
+         {{TOKEN}} values are replaced by replace.js.
     -->
     <script>
         const SITE_CONFIG = {
             // 1. BRAND COLORS & FONTS
             theme: {
                 colors: {
-                    background: "#FAF9F6",      // #F9F7F4 warm white (plumber)  | #F3F6FB cool white (electrician)
-                    text:       "#1B2A4A",    // #1C2433 deep navy   (plumber)  | #14213D navy ink (electrician)
-                    accent:     "#E2583E",  // #B84B2A terracotta  (plumber)  | #1D4ED8 electric blue (electrician)
-                    surface:    "#EAE6DF", // #EDE8DF warm stone  (plumber)  | #E5EBF5 cool surface (electrician)
-                    border:     "#D2CAC0"   // #D2CCB8 warm muted  (plumber)  | #C4CEE0 cool divider (electrician)
+                    background: "#FAF9F6",      // #FEF3C7 honey amber
+                    text:       "#1B2A4A",    // #451A03 deep espresso
+                    accent:     "#E2583E",  // #78350F coffee brown
+                    surface:    "#EAE6DF", // #FDE68A richer amber
+                    border:     "#D2CAC0"   // #D97706 warm amber line
                 },
                 fonts: {
-                    heading: "'Space Grotesk', sans-serif", // 'Space Grotesk', sans-serif
+                    heading: "'Space Grotesk', sans-serif", // 'Playfair Display', serif
                     body:    "'DM Sans', sans-serif"     // 'DM Sans', sans-serif
                 }
             },
 
-            // 2. NAV
+            // 2. SEO
+            seo: {
+                templateTitle: "{{SEO_TITLE}}",
+                description:   "{{SEO_DESCRIPTION}}",
+                keywords:      "{{SEO_KEYWORDS}}",
+                city:          "{{SEO_CITY}}",
+                province:      "{{SEO_PROVINCE}}",
+                phone:         "{{SEO_PHONE}}",
+                image:         "{{SEO_IMAGE}}",
+                url: null
+            },
+
+            // 3. NAVIGATION
             nav: {
-                brandName: "Overdoughs Cafe Express PITX",   // e.g. "RJ Plumbing"
-                phone:     "",   // shown in nav on desktop
-                cta:       "Contact Us",     // e.g. "Call Now"
-                ctaLink:   "tel:" // e.g. "tel:+639123456789"
+                brandName: "{{NAV_BRAND_NAME}}",  // e.g. "Kanto Coffee"
+                cta:       "{{NAV_CTA_TEXT}}",    // e.g. "Book a Table"
+                ctaLink:   "tel:"     // e.g. "#visit"
             },
 
-            // 3. HERO (trust-first: phone is primary CTA)
+            // 4. HERO  (max 4 text elements: eyebrow, headline A+B, tagline, CTA)
             hero: {
-                eyebrow:   "340 ★",   // e.g. "Licensed & Insured · Parañaque NCR"
-                headlineA: "Overdoughs Cafe Express PITX", // e.g. "Clogged drains."
-                headlineB: "Pastry shop", // e.g. "Fixed today."
-                phone:     "",      // large phone number display
-                ctaText:   "Call Now",   // e.g. "Call Now"
-                ctaLink:   "tel:",   // e.g. "tel:+639123456789"
-                image:     "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop"        // placehold.co or real URL
+                eyebrow:   "340 ★",    // e.g. "Est. 2019 · Parañaque"
+                headlineA: "Overdoughs Cafe Express PITX", // line 1
+                headlineB: "Pastry shop", // line 2, shown in italic
+                tagline:   "{{HERO_TAGLINE}}",    // max 20 words
+                ctaText:   "Call Now",   // "See the Menu"
+                ctaLink:   "tel:",   // "#menu"
+                image:     "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop"
             },
 
-            // 4. TRUST MARKERS (3 — displayed as horizontal strip, NOT cards)
-            trust: [
-                { label: "{{TRUST_1_LABEL}}", detail: "{{TRUST_1_DETAIL}}" },
-                { label: "{{TRUST_2_LABEL}}", detail: "{{TRUST_2_DETAIL}}" },
-                { label: "{{TRUST_3_LABEL}}", detail: "{{TRUST_3_DETAIL}}" }
-            ],
-
-            // 5. SERVICES (6 items — no prices, trades quote per job)
-            services: [
-                { name: "Service 1", description: "" },
-                { name: "Service 2", description: "" },
-                { name: "Service 3", description: "" },
-                { name: "Service 4", description: "" },
-                { name: "Service 5", description: "" },
-                { name: "Service 6", description: "" }
-            ],
+            // 5. MENU HIGHLIGHTS (4 items)
+            menu: {
+                heading:    "{{MENU_HEADING}}",
+                subheading: "{{MENU_SUBHEADING}}",
+                items: [
+                    { name: "{{MENU_1_NAME}}", description: "{{MENU_1_DESC}}", price: "{{MENU_1_PRICE}}", image: "{{MENU_1_IMAGE}}" },
+                    { name: "{{MENU_2_NAME}}", description: "{{MENU_2_DESC}}", price: "{{MENU_2_PRICE}}", image: "{{MENU_2_IMAGE}}" },
+                    { name: "{{MENU_3_NAME}}", description: "{{MENU_3_DESC}}", price: "{{MENU_3_PRICE}}", image: "{{MENU_3_IMAGE}}" },
+                    { name: "{{MENU_4_NAME}}", description: "{{MENU_4_DESC}}", price: "{{MENU_4_PRICE}}", image: "{{MENU_4_IMAGE}}" }
+                ]
+            },
 
             // 6. ABOUT
             about: {
-                headlineA: "About Overdoughs Cafe Express PITX", // e.g. "Local work,"
-                headlineB: "Pastry shop", // e.g. "done properly."
-                body:      "Overdoughs Cafe Express PITX in Parañaque.",        // 2-3 sentences
+                headlineA: "About Overdoughs Cafe Express PITX", // "A cup is just a cup."
+                headlineB: "Pastry shop", // "Until it isn't." (italic)
+                body:      "Overdoughs Cafe Express PITX in Parañaque.",
                 image:     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=800&fit=crop",
                 year:      ""
             },
 
-            // 7. COVERAGE (service area)
-            coverage: {
-                heading:       "Service Area",  // e.g. "We Cover"
-                neighborhoods: "Paranaque, Metro Manila",    // comma-sep: "BF Homes, Sucat, Las Pinas..."
-                mapsEmbed:     "https://maps.google.com/maps?q=+Pitx,+Parañaque,+1701+Metro+Manila&output=embed"
+            // 7. GALLERY (6 images)
+            gallery: {
+                heading: "{{GALLERY_HEADING}}",
+                images: [
+                    "{{GALLERY_1}}", "{{GALLERY_2}}", "{{GALLERY_3}}",
+                    "{{GALLERY_4}}", "{{GALLERY_5}}", "{{GALLERY_6}}"
+                ]
             },
 
-            // 8. CONTACT
+            // 8. HOURS + LOCATION
+            hours: {
+                heading:   "{{HOURS_HEADING}}",
+                days: [
+                    { label: "{{HOURS_1_LABEL}}", time: "{{HOURS_1_TIME}}" },
+                    { label: "{{HOURS_2_LABEL}}", time: "{{HOURS_2_TIME}}" },
+                    { label: "{{HOURS_3_LABEL}}", time: "{{HOURS_3_TIME}}" }
+                ],
+                address:   "{{HOURS_ADDRESS}}",
+                mapsEmbed: "{{HOURS_MAPS_EMBED}}"
+            },
+
+            // 9. CONTACT
             contact: {
                 phone:     "",
-                hours:     "TODO: hours",  // e.g. "Mon-Sat 7AM-8PM, Sun 8AM-5PM"
-                facebook:  "",
-                instagram: ""
+                facebook:  "{{CONTACT_FACEBOOK}}",
+                instagram: "{{CONTACT_INSTAGRAM}}"
             }
         };
     </script>
+    <!-- ======================================================================= -->
 
     <style>
         /* ============================================================
            CSS VARIABLES — injected from SITE_CONFIG by JS
-           Default: plumber palette (warm white + terracotta)
-        ============================================================ */
+           ============================================================ */
         :root {
             /* palette — JS-injected from SITE_CONFIG */
-            --bg:     #F9F7F4;
-            --text:   #1C2433;
-            --accent: #B84B2A;
-            --surf:   #EDE8DF;
-            --bord:   #D2CCB8;
+            --bg:     #FEF3C7;
+            --text:   #451A03;
+            --accent: #78350F;
+            --surf:   #FDE68A;
+            --bord:   #D97706;
 
-            /* derived ink — always follows the injected palette, never hardcode rgba.
-               Panels (trust strip, contact CTA) use --text as background, so their
-               ink derives from --bg: correct in BOTH plumber and electrician themes. */
-            --ink-muted:      color-mix(in srgb, var(--text) 62%, transparent);
-            --ink-faint:      color-mix(in srgb, var(--text) 42%, transparent);
-            --on-panel:       var(--bg);
-            --on-panel-muted: color-mix(in srgb, var(--bg) 55%, transparent);
-            --on-panel-line:  color-mix(in srgb, var(--bg) 15%, transparent);
+            /* derived ink — always follows the injected palette, never hardcode rgba */
+            --ink-muted:     color-mix(in srgb, var(--text) 62%, transparent);
+            --ink-faint:     color-mix(in srgb, var(--text) 40%, transparent);
+            --line:          color-mix(in srgb, var(--bord) 45%, transparent);
+            /* dark panels (nav, about, footer) use --text as background */
+            --on-dark:       var(--bg);
+            --on-dark-muted: color-mix(in srgb, var(--bg) 62%, transparent);
+            --on-dark-faint: color-mix(in srgb, var(--bg) 40%, transparent);
+            --on-dark-line:  color-mix(in srgb, var(--bg) 14%, transparent);
 
             /* type scale — 1.25 major third */
             --fs-2xs:  0.72rem;
@@ -158,15 +175,16 @@
             --fs-sm:   0.875rem;
             --fs-base: 1rem;
             --fs-md:   1.125rem;
-            --fs-h3:   clamp(1.85rem, 4vw, 3rem);
-            --fs-h2:   clamp(2rem, 5vw, 3.5rem);
-            --fs-h1:   clamp(2.5rem, 6vw, 5.5rem);
+            --fs-lg:   clamp(1.125rem, 1rem + 0.8vw, 1.45rem);
+            --fs-h3:   clamp(1.75rem, 4vw, 2.75rem);
+            --fs-h2:   clamp(2rem, 5vw, 3.75rem);
+            --fs-h1:   clamp(2.75rem, 7.5vw, 6.5rem);
 
             /* rhythm */
-            --sec-pad: clamp(4.5rem, 10vh, 7rem);
-            --gutter:  clamp(1.5rem, 5vw, 4rem);
+            --sec-pad: clamp(4.5rem, 10vw, 7.5rem);
+            --gutter:  clamp(1.5rem, 5vw, 4.5rem);
 
-            --font-h: 'Space Grotesk', sans-serif;
+            --font-h: 'Playfair Display', Georgia, serif;
             --font-b: 'DM Sans', system-ui, sans-serif;
             --nav-h:  68px;
             --r:      4px;
@@ -174,7 +192,7 @@
 
         /* ============================================================
            RESET + BASE
-        ============================================================ */
+           ============================================================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
@@ -193,19 +211,20 @@
             outline-offset: 3px;
             border-radius: var(--r);
         }
-        ::selection { background: var(--accent); color: #fff; }
+        ::selection { background: var(--accent); color: var(--bg); }
         section[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
         h1, h2, h3 { text-wrap: balance; }
         a, button { -webkit-tap-highlight-color: transparent; }
 
         /* ============================================================
-           SCROLL REVEAL
-        ============================================================ */
+           SCROLL REVEAL — hidden until in view; JS fallback un-hides
+           everything after 1.6s so content can never stay invisible
+           ============================================================ */
         .reveal {
             opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(18px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         @media (prefers-reduced-motion: reduce) {
@@ -214,53 +233,52 @@
 
         /* ============================================================
            NAVIGATION
-        ============================================================ */
+           ============================================================ */
         .nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
             height: var(--nav-h);
-            background: var(--bg);
-            border-bottom: 1px solid var(--bord);
+            background: var(--text);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 clamp(1.25rem, 4vw, 3rem);
-            gap: 1rem;
         }
         .nav__brand {
             font-family: var(--font-h);
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
             font-weight: 700;
-            color: var(--text);
+            color: var(--bg);
             flex-shrink: 0;
         }
-        .nav__phone {
-            font-family: var(--font-h);
-            font-size: var(--fs-sm);
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: -0.01em;
-            flex: 1;
-            text-align: center;
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
-        @media (max-width: 767px) { .nav__phone { display: none; } }
+        .nav__links a {
+            color: var(--on-dark-muted);
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            transition: color 180ms ease;
+        }
+        .nav__links a:hover { color: var(--bg); }
+        @media (max-width: 767px) { .nav__links { display: none; } }
+
         .nav__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
+            display: inline-block;
             background: var(--accent);
-            color: #fff;
+            color: var(--bg);
             padding: 0.65rem 1.4rem;
             border-radius: var(--r);
             font-size: var(--fs-sm);
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 180ms ease, transform 180ms ease;
+            transition: background 180ms ease, transform 180ms ease;
             flex-shrink: 0;
-            white-space: nowrap;
         }
-        .nav__cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .nav__cta:hover { background: color-mix(in srgb, var(--accent) 78%, #000); transform: translateY(-1px); }
         .nav__cta:active { transform: translateY(0); }
 
         .nav__hamburger {
@@ -273,615 +291,607 @@
         .nav__hamburger span {
             display: block;
             width: 22px; height: 2px;
-            background: var(--text);
+            background: var(--bg);
             border-radius: 2px;
             transition: all 200ms ease;
         }
-        @media (max-width: 480px) { .nav__hamburger { display: flex; } }
-        @media (max-width: 480px) { .nav__cta { display: none; } }
+        @media (max-width: 767px) { .nav__hamburger { display: flex; } }
 
         .nav__drawer {
             display: none;
             position: fixed;
             top: var(--nav-h); left: 0; right: 0;
-            background: var(--bg);
-            border-bottom: 1px solid var(--bord);
+            background: var(--text);
             padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 2rem;
             z-index: 99;
         }
         .nav__drawer.open { display: block; }
-        .nav__drawer__phone {
-            font-family: var(--font-h);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--accent);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--bord);
-            display: block;
-        }
+        .nav__drawer ul { list-style: none; display: flex; flex-direction: column; }
         .nav__drawer a {
-            color: var(--text);
-            font-size: var(--fs-sm);
+            color: var(--bg);
+            font-size: 1rem;
             font-weight: 500;
             display: block;
             padding: 0.875rem 0;
-            border-bottom: 1px solid var(--bord);
-            transition: color 150ms ease;
+            border-bottom: 1px solid var(--on-dark-line);
         }
-        .nav__drawer a:last-child { border-bottom: none; }
-        .nav__drawer a:hover { color: var(--accent); }
 
         /* ============================================================
-           HERO — phone is the primary CTA
-        ============================================================ */
+           HERO — asymmetric split (60/40)
+           ============================================================ */
         .hero {
             min-height: 100dvh;
-            display: grid;
-            grid-template-columns: 55fr 45fr;
             padding-top: var(--nav-h);
+            display: grid;
+            grid-template-columns: 1fr;
         }
+        @media (min-width: 768px) {
+            .hero { grid-template-columns: 58% 42%; }
+        }
+
         .hero__content {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+            padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
         }
+
         .hero__eyebrow {
             font-size: var(--fs-2xs);
-            font-weight: 600;
-            letter-spacing: 0.14em;
+            font-weight: 700;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 1.25rem;
         }
+
         .hero__headline {
             font-family: var(--font-h);
             font-size: var(--fs-h1);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 0.5rem;
+            line-height: 1.08; /* italic descenders need clearance */
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.05em;
         }
-        .hero__headline span {
+        .hero__headline em {
+            font-style: italic;
             color: var(--accent);
-            display: block;
         }
-        .hero__phone {
-            font-family: var(--font-h);
-            font-size: clamp(1.75rem, 4vw, 3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--accent);
-            margin: 1.25rem 0 2rem;
-            line-height: 1;
+
+        .hero__tagline {
+            font-size: clamp(1rem, 1.4vw, 1.125rem);
+            line-height: 1.65;
+            color: var(--ink-muted);
+            max-width: 38ch;
+            margin-bottom: 2.5rem;
         }
+
         .hero__cta {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--accent);
-            color: #fff;
+            background: var(--text);
+            color: var(--bg);
             padding: 0.9rem 2rem;
             border-radius: var(--r);
-            font-family: var(--font-h);
             font-size: var(--fs-base);
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 200ms ease, transform 200ms ease;
+            transition: background 200ms ease, transform 200ms ease;
             align-self: flex-start;
         }
         .hero__cta svg { transition: transform 200ms ease; }
-        .hero__cta:hover { opacity: 0.88; transform: translateY(-2px); }
+        .hero__cta:hover { background: var(--accent); transform: translateY(-2px); }
         .hero__cta:hover svg { transform: translateX(3px); }
         .hero__cta:active { transform: translateY(0); }
-        /* hero load cascade — after .hero__cta so its `transition` shorthand doesn't reset these delays */
-        .hero__eyebrow { transition-delay: 0.05s; }
+        /* hero load cascade — placed after .hero__cta so its `transition` shorthand doesn't reset these delays */
+        .hero__eyebrow  { transition-delay: 0.05s; }
         .hero__headline { transition-delay: 0.15s; }
-        .hero__phone { transition-delay: 0.25s; }
-        .hero__cta { transition-delay: 0.35s; }
+        .hero__tagline  { transition-delay: 0.25s; }
+        .hero__cta      { transition-delay: 0.35s; }
         .hero__cta:hover, .hero__cta:active { transition-delay: 0s; }
 
-        .hero__image-panel {
+        .hero__image {
             position: relative;
             overflow: hidden;
+            min-height: 380px;
+            background: var(--accent);
         }
-        .hero__image-panel img {
+        @media (min-width: 768px) { .hero__image { min-height: unset; } }
+        .hero__image img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .hero__image-panel::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, var(--bg) 0%, transparent 25%);
-        }
-
-        @media (max-width: 767px) {
-            .hero {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 240px;
-                min-height: auto;
-            }
-            .hero__content { padding: 3rem 1.5rem 2.5rem; }
-            .hero__image-panel::after {
-                background: linear-gradient(to bottom, var(--bg) 0%, transparent 20%);
-            }
-        }
 
         /* ============================================================
-           TRUST STRIP — horizontal band, NOT equal cards
-        ============================================================ */
-        .trust {
-            background: var(--text);
-            padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            flex-wrap: wrap;
-        }
-        .trust__item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.5rem 2rem;
-            flex: 1;
-            min-width: 160px;
-            max-width: 280px;
-        }
-        .trust__item + .trust__item {
-            border-left: 1px solid var(--on-panel-line);
-        }
-        .trust__icon {
-            width: 32px; height: 32px;
-            flex-shrink: 0;
-            color: var(--accent);
-        }
-        .trust__label {
-            font-family: var(--font-h);
-            font-size: var(--fs-sm);
-            font-weight: 600;
-            color: var(--on-panel);
-            line-height: 1.2;
-        }
-        .trust__detail {
-            font-size: var(--fs-2xs);
-            color: var(--on-panel-muted);
-            margin-top: 1px;
-        }
-        @media (max-width: 640px) {
-            .trust { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
-            .trust__item { border-left: none; border-bottom: 1px solid var(--on-panel-line); padding: 0.75rem 0; max-width: none; }
-            .trust__item:last-child { border-bottom: none; }
-        }
-
-        /* ============================================================
-           SERVICES
-        ============================================================ */
-        .services {
+           MENU — editorial list (not cards)
+           ============================================================ */
+        .menu {
             background: var(--surf);
             padding: var(--sec-pad) var(--gutter);
         }
-        .services__header {
-            margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+        .menu__header {
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
-        .services__eyebrow {
-            font-size: var(--fs-2xs);
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-        .services__heading {
+        .menu__heading {
             font-family: var(--font-h);
             font-size: var(--fs-h2);
-            font-weight: 700;
-            letter-spacing: -0.02em;
             line-height: 1.05;
+            letter-spacing: -0.025em;
         }
-        .services__grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-        }
-        .service-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--bord);
-        }
-        .service-item:nth-child(odd)  { padding-right: 3rem; border-right: 1px solid var(--bord); }
-        .service-item:nth-child(even) { padding-left: 3rem; }
-        .service-item:nth-last-child(-n+2) { border-bottom: none; }
-        .service__bar {
-            width: 3px;
-            height: 36px;
-            background: var(--accent);
-            border-radius: 2px;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .service__name {
-            font-family: var(--font-h);
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.3rem;
-        }
-        .service__desc {
-            font-size: var(--fs-xs);
+        .menu__subheading {
+            font-size: var(--fs-base);
             color: var(--ink-muted);
-            line-height: 1.55;
+        }
+        .menu__list { list-style: none; }
+
+        .menu__item {
+            display: grid;
+            grid-template-columns: 2.25rem 1fr auto;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--line);
+            cursor: default;
+        }
+        .menu__item:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+        @media (min-width: 640px) {
+            .menu__item { grid-template-columns: 2.75rem 1fr 80px auto; gap: 1.75rem; }
         }
 
-        @media (max-width: 640px) {
-            .services__grid { grid-template-columns: 1fr; }
-            .service-item:nth-child(odd)  { padding-right: 0; border-right: none; }
-            .service-item:nth-child(even) { padding-left: 0; }
-            .service-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--bord); }
-            .service-item:last-child { border-bottom: none; }
+        .menu__num {
+            font-size: var(--fs-2xs);
+            font-weight: 700;
+            color: var(--ink-faint);
+            letter-spacing: 0.05em;
+        }
+        .menu__info { display: flex; flex-direction: column; gap: 0.2rem; }
+        .menu__name {
+            font-family: var(--font-h);
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .menu__desc {
+            font-size: var(--fs-sm);
+            color: var(--ink-muted);
+            line-height: 1.4;
+        }
+
+        .menu__img-wrap {
+            display: none;
+            width: 80px; height: 80px;
+            border-radius: calc(var(--r) * 2);
+            overflow: hidden;
+        }
+        @media (min-width: 640px) { .menu__img-wrap { display: block; } }
+        .menu__img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 400ms ease;
+        }
+        .menu__item:hover .menu__img-wrap img { transform: scale(1.08); }
+
+        .menu__price {
+            font-family: var(--font-h);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            white-space: nowrap;
         }
 
         /* ============================================================
-           ABOUT
-        ============================================================ */
+           ABOUT — dark split panel
+           ============================================================ */
         .about {
             display: grid;
-            grid-template-columns: 55fr 45fr;
-            min-height: 500px;
+            grid-template-columns: 1fr;
         }
+        @media (min-width: 768px) { .about { grid-template-columns: 1fr 1fr; } }
+
+        .about__image {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+            background: var(--accent);
+        }
+        @media (min-width: 768px) { .about__image { min-height: 560px; } }
+        .about__image img {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
         .about__content {
+            background: var(--text);
+            color: var(--bg);
+            padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: clamp(3.5rem, 9vh, 6rem) clamp(1.5rem, 5vw, 4rem);
-            background: var(--bg);
+            gap: 1.75rem;
         }
         .about__year {
             font-size: var(--fs-2xs);
-            font-weight: 600;
-            letter-spacing: 0.14em;
+            font-weight: 700;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1.25rem;
+            color: var(--on-dark-faint);
         }
         .about__heading {
             font-family: var(--font-h);
             font-size: var(--fs-h3);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            letter-spacing: -0.015em;
         }
-        .about__heading span { color: var(--accent); }
+        .about__heading em {
+            font-style: italic;
+            color: var(--surf);
+        }
         .about__body {
-            font-size: clamp(0.9375rem, 1.3vw, 1rem);
-            color: var(--ink-muted);
-            max-width: 46ch;
-            line-height: 1.8;
-        }
-        .about__image {
-            position: relative;
-            overflow: hidden;
-        }
-        .about__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        @media (max-width: 767px) {
-            .about { grid-template-columns: 1fr; min-height: auto; }
-            .about__image { min-height: 260px; }
+            font-size: var(--fs-base);
+            line-height: 1.7;
+            color: var(--on-dark-muted);
+            max-width: 38ch;
         }
 
         /* ============================================================
-           COVERAGE
-        ============================================================ */
-        .coverage {
+           GALLERY — mosaic grid
+           ============================================================ */
+        .gallery {
+            padding: var(--sec-pad) var(--gutter);
+        }
+        .gallery__header { margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+        .gallery__heading {
+            font-family: var(--font-h);
+            font-size: var(--fs-h2);
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+        }
+
+        .gallery__grid {
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (min-width: 768px) {
+            .gallery__grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 280px 280px 220px;
+            }
+            /* tile 1: wide hero tile; tile 6: full-width banner row — 6 tiles, no empty cells */
+            .gallery__tile:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+            .gallery__tile:nth-child(6) { grid-column: 1 / -1; }
+        }
+
+        .gallery__tile {
+            overflow: hidden;
+            border-radius: var(--r);
+            background: var(--surf);
+        }
+        .gallery__tile img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+            display: block;
+        }
+        .gallery__tile:hover img { transform: scale(1.05); }
+        @media (min-width: 768px) {
+            .gallery__tile img { height: 100%; }
+        }
+
+        /* ============================================================
+           VISIT — hours + location
+           ============================================================ */
+        .visit {
             background: var(--surf);
             padding: var(--sec-pad) var(--gutter);
         }
-        .coverage__heading {
+        .visit__inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2.5rem, 6vw, 5rem);
+        }
+        @media (min-width: 768px) { .visit__inner { grid-template-columns: 1fr 1fr; } }
+
+        .visit__hours-heading {
             font-family: var(--font-h);
             font-size: var(--fs-h3);
-            font-weight: 700;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            line-height: 1.05;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
-        .coverage__areas {
-            font-size: var(--fs-sm);
-            color: var(--ink-muted);
-            margin-bottom: clamp(2rem, 5vh, 3.5rem);
-            max-width: 60ch;
-            line-height: 1.7;
+        .visit__hours-list { list-style: none; }
+        .visit__hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--line);
         }
-        .coverage__map {
-            border-radius: var(--r);
-            overflow: hidden;
-            border: 1px solid var(--bord);
-            background: var(--bg);
+        .visit__hours-list .visit__hours-row:first-child {
+            border-top: 1px solid var(--line);
         }
-        .coverage__map iframe {
-            width: 100%;
-            aspect-ratio: 16/7;
-            display: block;
-            border: none;
-        }
-        @media (max-width: 640px) {
-            .coverage__map iframe { aspect-ratio: 4/3; }
-        }
+        .visit__day  { font-weight: 600; font-size: var(--fs-sm); }
+        .visit__time { font-size: var(--fs-sm); color: var(--ink-muted); }
 
-        /* ============================================================
-           CONTACT CTA — large phone, hours
-        ============================================================ */
-        .contact-cta {
-            background: var(--text);
-            padding: var(--sec-pad) var(--gutter);
-            text-align: center;
+        .visit__map { display: flex; flex-direction: column; gap: 1.25rem; }
+        .visit__address {
+            font-size: var(--fs-base);
+            line-height: 1.7;
+            color: var(--ink-muted);
         }
-        .contact-cta__eyebrow {
-            font-size: var(--fs-2xs);
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--on-panel-muted);
-            margin-bottom: 1rem;
+        .visit__map-frame {
+            border-radius: calc(var(--r) * 3);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
         }
-        .contact-cta__phone {
-            font-family: var(--font-h);
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--accent);
+        .visit__map-frame iframe {
+            width: 100%; height: 100%;
+            border: none;
             display: block;
-            margin-bottom: 0.5rem;
-            transition: opacity 180ms ease;
         }
-        .contact-cta__phone:hover { opacity: 0.85; }
-        .contact-cta__hours {
-            font-size: var(--fs-sm);
-            color: var(--on-panel-muted);
-            margin-bottom: 2.5rem;
-        }
-        .contact-cta__btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            color: #fff;
-            padding: 1rem 2.5rem;
-            border-radius: var(--r);
-            font-family: var(--font-h);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 180ms ease, transform 180ms ease;
-        }
-        .contact-cta__btn:hover { opacity: 0.88; transform: translateY(-2px); }
-        .contact-cta__btn:active { transform: translateY(0); }
 
         /* ============================================================
            FOOTER
-        ============================================================ */
-        footer {
-            background: var(--bg);
-            border-top: 1px solid var(--bord);
-            padding: clamp(2.5rem, 6vh, 4rem) clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 3vh, 2rem);
+           ============================================================ */
+        .footer {
+            background: var(--text);
+            color: var(--bg);
+            padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
         }
-        .footer__top {
+        .footer__inner {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--bord);
-            margin-bottom: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .footer__inner { grid-template-columns: 2fr 1fr 1fr; align-items: start; }
         }
         .footer__brand {
             font-family: var(--font-h);
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
+            color: var(--bg);
+            margin-bottom: 0.625rem;
         }
         .footer__tagline {
-            font-size: var(--fs-xs);
-            color: var(--ink-faint);
+            font-size: var(--fs-sm);
+            color: var(--on-dark-faint);
+            line-height: 1.6;
+            max-width: 26ch;
         }
-        .footer__col-heading {
+        .footer__col-label {
             font-size: var(--fs-2xs);
-            font-weight: 600;
-            letter-spacing: 0.14em;
+            font-weight: 700;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--on-dark-faint);
             margin-bottom: 0.875rem;
         }
-        .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-        .footer__col a {
-            font-size: var(--fs-xs);
-            color: var(--ink-muted);
-            transition: color 150ms ease;
+        .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .footer__links a {
+            font-size: var(--fs-sm);
+            color: var(--on-dark-muted);
+            transition: color 180ms ease;
         }
-        .footer__col a:hover { color: var(--text); }
-        .footer__social {
-            display: flex;
-            gap: 0.6rem;
-            margin-top: 0.6rem;
-        }
+        .footer__links a:hover { color: var(--bg); }
+
+        .footer__social { display: flex; gap: 0.75rem; margin-top: 0.625rem; }
         .footer__social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px; height: 32px;
-            border: 1px solid var(--bord);
+            width: 40px; height: 40px;
             border-radius: var(--r);
-            color: var(--ink-muted);
-            transition: border-color 150ms ease, color 150ms ease;
+            border: 1px solid var(--on-dark-line);
+            color: var(--on-dark-muted);
+            transition: all 180ms ease;
         }
-        .footer__social a:hover { border-color: var(--accent); color: var(--accent); }
-        .footer__bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .footer__social a:hover {
+            border-color: var(--on-dark-muted);
+            color: var(--bg);
+        }
+
+        .footer__divider {
+            border: none;
+            border-top: 1px solid var(--on-dark-line);
+            margin: 2rem auto 1.25rem;
+            max-width: 1200px;
         }
         .footer__copy {
-            font-size: var(--fs-2xs);
-            color: var(--ink-faint);
+            font-size: var(--fs-xs);
+            color: var(--on-dark-faint);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
         }
-        @media (max-width: 767px) { .footer__top { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 480px) { .footer__top { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-        <a class="nav__brand" href="#" id="nav-brand">RJ Plumbing</a>
-        <a class="nav__phone" href="tel:" id="nav-phone">+63 912 345 6789</a>
-        <a class="nav__cta" href="tel:" id="nav-cta">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            Call Now
-        </a>
+    <!-- NAVIGATION -->
+    <nav class="nav" aria-label="Main navigation">
+        <a class="nav__brand" href="#" id="nav-brand">{{NAV_BRAND_NAME}}</a>
+        <ul class="nav__links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#visit">Visit</a></li>
+        </ul>
+        <a class="nav__cta" href="tel:" id="nav-cta">{{NAV_CTA_TEXT}}</a>
         <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- MOBILE DRAWER -->
-    <nav class="nav__drawer" id="drawer" aria-label="Mobile navigation">
-        <a class="nav__drawer__phone" href="tel:" id="drawer-phone">+63 912 345 6789</a>
-        <a href="#services" onclick="closeDrawer()">Services</a>
-        <a href="#about"    onclick="closeDrawer()">About</a>
-        <a href="#coverage" onclick="closeDrawer()">Service Area</a>
-    </nav>
+    <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
+        <ul>
+            <li><a href="#menu"  onclick="closeDrawer()">Menu</a></li>
+            <li><a href="#about" onclick="closeDrawer()">About</a></li>
+            <li><a href="#visit" onclick="closeDrawer()">Visit Us</a></li>
+        </ul>
+    </div>
 
     <!-- HERO -->
-    <section class="hero" id="home" aria-label="Hero">
+    <section class="hero" aria-label="Hero">
         <div class="hero__content">
-            <p class="hero__eyebrow reveal" id="hero-eyebrow">Licensed &amp; Insured &middot; Parañaque NCR</p>
-            <h1 class="hero__headline reveal" id="hero-headline">Clogged drains.<span>Fixed today.</span></h1>
-            <a class="hero__phone reveal" href="tel:" id="hero-phone-link">
-                <span id="hero-phone">+63 912 345 6789</span>
-            </a>
+            <p class="hero__eyebrow reveal" id="hero-eyebrow">340 ★</p>
+            <h1 class="hero__headline reveal" id="hero-headline">
+                Overdoughs Cafe Express PITX<br><em>Pastry shop</em>
+            </h1>
+            <p class="hero__tagline reveal" id="hero-tagline">{{HERO_TAGLINE}}</p>
             <a class="hero__cta reveal" href="tel:" id="hero-cta">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
                 Call Now
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                    <path d="M2.5 7.5h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </a>
         </div>
-        <div class="hero__image-panel">
-            <img src="https://placehold.co/800x1000/EDE8DF/B84B2A?text=%E2%80%8B" id="hero-img" alt="" aria-hidden="true">
+        <div class="hero__image">
+            <img src="https://placehold.co/900x1100/78350F/FEF3C7?text=%E2%80%8B" id="hero-img" alt="" aria-hidden="true" fetchpriority="high">
         </div>
     </section>
 
-    <!-- TRUST STRIP -->
-    <div class="trust" id="trust-strip" aria-label="Why choose us">
-        <!-- populated by JS -->
-    </div>
-
-    <!-- SERVICES -->
-    <section class="services" id="services" aria-label="Services">
-        <div class="services__header reveal">
-            <h2 class="services__heading" id="services-heading">Services</h2>
+    <!-- MENU HIGHLIGHTS -->
+    <section class="menu" id="menu" aria-label="Menu highlights">
+        <div class="menu__header reveal">
+            <h2 class="menu__heading" id="menu-heading">{{MENU_HEADING}}</h2>
+            <p class="menu__subheading" id="menu-subheading">{{MENU_SUBHEADING}}</p>
         </div>
-        <div class="services__grid" id="services-grid">
-            <!-- populated by JS -->
-        </div>
+        <ul class="menu__list" id="menu-list">
+            <!-- populated by JS from SITE_CONFIG.menu.items -->
+        </ul>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about" aria-label="About">
-        <div class="about__content">
-            <p class="about__year reveal" id="about-year">Est. 2010</p>
-            <h2 class="about__heading reveal" id="about-heading">Local work,<br><span>done properly.</span></h2>
-            <p class="about__body reveal" id="about-body">Based in BF Homes, we have been handling residential and commercial plumbing in Parañaque for over a decade. We show up on time, price fairly, and stand behind every job.</p>
-        </div>
         <div class="about__image">
-            <img src="https://placehold.co/800x900/D2CCB8/B84B2A?text=%E2%80%8B" id="about-img" alt="" aria-hidden="true">
+            <img src="https://placehold.co/800x900/D97706/FEF3C7?text=%E2%80%8B" id="about-img" alt="" aria-hidden="true">
+        </div>
+        <div class="about__content">
+            <p class="about__year reveal" id="about-year"></p>
+            <h2 class="about__heading reveal" id="about-heading">
+                About Overdoughs Cafe Express PITX<br><em>Pastry shop</em>
+            </h2>
+            <p class="about__body reveal" id="about-body">Overdoughs Cafe Express PITX in Parañaque.</p>
         </div>
     </section>
 
-    <!-- COVERAGE -->
-    <section class="coverage" id="coverage" aria-label="Service area">
-        <h2 class="coverage__heading reveal" id="cov-heading">We Cover</h2>
-        <p class="coverage__areas reveal" id="cov-areas">BF Homes, Sucat, Las Pinas, Alabang, Paranaque City, and surrounding neighborhoods.</p>
-        <div class="coverage__map reveal">
-            <iframe title="Service area" src="https://maps.google.com/maps?q=paranaque+city+hall&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="cov-map"></iframe>
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery" aria-label="Gallery">
+        <div class="gallery__header reveal">
+            <h2 class="gallery__heading" id="gallery-heading">{{GALLERY_HEADING}}</h2>
+        </div>
+        <div class="gallery__grid" id="gallery-grid">
+            <!-- populated by JS from SITE_CONFIG.gallery.images -->
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
-    <section class="contact-cta" aria-label="Call us">
-        <p class="contact-cta__eyebrow reveal">Get in touch</p>
-        <a class="contact-cta__phone reveal" href="tel:" id="cta-phone">+63 912 345 6789</a>
-        <p class="contact-cta__hours reveal" id="cta-hours">Mon-Sat 7AM-8PM &middot; Sun 8AM-5PM</p>
-        <a class="contact-cta__btn reveal" href="tel:" id="cta-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            Call Now
-        </a>
+    <!-- HOURS + LOCATION -->
+    <section class="visit" id="visit" aria-label="Hours and location">
+        <div class="visit__inner">
+            <div class="reveal">
+                <h2 class="visit__hours-heading" id="visit-heading">{{HOURS_HEADING}}</h2>
+                <ul class="visit__hours-list" id="hours-list">
+                    <!-- populated by JS -->
+                </ul>
+            </div>
+            <div class="visit__map reveal">
+                <p class="visit__address" id="visit-address">
+                    {{HOURS_ADDRESS}}
+                </p>
+                <div class="visit__map-frame">
+                    <iframe
+                        id="map-iframe"
+                        title="Location map"
+                        src="https://maps.google.com/maps?q=paranaque+city+hall&output=embed"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer__top">
+    <footer class="footer" aria-label="Footer">
+        <div class="footer__inner">
             <div>
-                <p class="footer__brand" id="footer-brand">RJ Plumbing</p>
-                <p class="footer__tagline">Licensed. Insured. Local.</p>
+                <div class="footer__brand" id="footer-brand">{{NAV_BRAND_NAME}}</div>
+                <p class="footer__tagline">Good coffee and good people, every single day.</p>
             </div>
-            <div class="footer__col">
-                <p class="footer__col-heading">Contact</p>
-                <ul>
+            <div>
+                <p class="footer__col-label">Contact</p>
+                <ul class="footer__links">
                     <li><a href="tel:" id="footer-phone">+63 912 345 6789</a></li>
                 </ul>
                 <div class="footer__social">
                     <a href="#" id="social-fb" aria-label="Facebook">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                         </svg>
                     </a>
                     <a href="#" id="social-ig" aria-label="Instagram">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
                             <circle cx="12" cy="12" r="4"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="footer__col">
-                <p class="footer__col-heading">Navigate</p>
-                <ul>
-                    <li><a href="#services">Services</a></li>
+            <div>
+                <p class="footer__col-label">Explore</p>
+                <ul class="footer__links">
+                    <li><a href="#menu">Menu</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#coverage">Service Area</a></li>
+                    <li><a href="#visit">Visit Us</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer__bottom">
-            <p class="footer__copy" id="footer-copy">&copy; 2025 RJ Plumbing. All rights reserved.</p>
-        </div>
+        <hr class="footer__divider">
+        <span class="footer__copy" id="footer-copy">© 2026 Café. All rights reserved.</span>
     </footer>
 
     <script>
-        /* =====================================================================
-           1. INJECT SITE_CONFIG → CSS VARIABLES
-        ===================================================================== */
+        /* ============================================================
+           HELPERS
+           ============================================================ */
+        function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
+        function setText(id, val) {
+            if (isToken(val)) return;
+            var el = document.getElementById(id);
+            if (el) el.textContent = val;
+        }
+        function setAttr(id, attr, val) {
+            if (isToken(val)) return;
+            var el = document.getElementById(id);
+            if (el) el.setAttribute(attr, val);
+        }
+
+        /* ============================================================
+           APPLY SITE_CONFIG
+           ============================================================ */
         (function () {
-            var c = SITE_CONFIG.theme.colors;
-            var f = SITE_CONFIG.theme.fonts;
+            var cfg = SITE_CONFIG;
+            var c = cfg.theme.colors;
+            var f = cfg.theme.fonts;
             var d = document.documentElement;
-            function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
+
+            // CSS vars
             if (!isToken(c.background)) d.style.setProperty('--bg',     c.background);
             if (!isToken(c.text))       d.style.setProperty('--text',   c.text);
             if (!isToken(c.accent))     d.style.setProperty('--accent', c.accent);
@@ -889,198 +899,186 @@
             if (!isToken(c.border))     d.style.setProperty('--bord',   c.border);
             if (!isToken(f.heading))    d.style.setProperty('--font-h', f.heading);
             if (!isToken(f.body))       d.style.setProperty('--font-b', f.body);
-        })();
 
-        /* =====================================================================
-           2. POPULATE DOM FROM SITE_CONFIG
-        ===================================================================== */
-        (function () {
-            function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
-            function set(id, val) {
-                var el = document.getElementById(id);
-                if (el && !isToken(val)) el.textContent = val;
-            }
-            function setHref(id, val) {
-                var el = document.getElementById(id);
-                if (el && !isToken(val)) el.href = val;
-            }
-            function setSrc(id, val) {
-                var el = document.getElementById(id);
-                if (el && !isToken(val)) el.src = val;
-            }
+            // Nav
+            var brand = isToken(cfg.nav.brandName) ? 'Café' : cfg.nav.brandName;
+            setText('nav-brand', cfg.nav.brandName);
+            if (!isToken(cfg.nav.cta))     setText('nav-cta', cfg.nav.cta);
+            if (!isToken(cfg.nav.ctaLink)) setAttr('nav-cta', 'href', cfg.nav.ctaLink);
 
-            var n = SITE_CONFIG.nav;
-            set('nav-brand', n.brandName);
-            set('footer-brand', n.brandName);
-            if (!isToken(n.phone)) {
-                setHref('nav-cta', 'tel:' + n.phone);
-                setHref('nav-phone', 'tel:' + n.phone);
-                set('nav-phone', n.phone);
-            }
-            if (!isToken(n.cta)) {
-                var navCta = document.getElementById('nav-cta');
-                if (navCta) {
-                    var svg = navCta.querySelector('svg');
-                    navCta.textContent = n.cta;
-                    if (svg) navCta.prepend(svg);
+            // Hero
+            setText('hero-eyebrow', cfg.hero.eyebrow);
+            setText('hero-tagline', cfg.hero.tagline);
+            if (!isToken(cfg.hero.ctaText)) {
+                var ctaEl = document.getElementById('hero-cta');
+                if (ctaEl) {
+                    // preserve the SVG arrow
+                    var svg = ctaEl.querySelector('svg');
+                    ctaEl.textContent = cfg.hero.ctaText + ' ';
+                    if (svg) ctaEl.appendChild(svg);
                 }
             }
-
-            var h = SITE_CONFIG.hero;
-            set('hero-eyebrow', h.eyebrow);
-            if (!isToken(h.headlineA) && !isToken(h.headlineB)) {
+            if (!isToken(cfg.hero.ctaLink)) setAttr('hero-cta', 'href', cfg.hero.ctaLink);
+            if (!isToken(cfg.hero.headlineA)) {
                 var hl = document.getElementById('hero-headline');
-                if (hl) hl.innerHTML = h.headlineA + '<span>' + h.headlineB + '</span>';
-            }
-            if (!isToken(h.phone)) {
-                set('hero-phone', h.phone);
-                setHref('hero-phone-link', 'tel:' + h.phone);
-                setHref('hero-cta', 'tel:' + h.phone);
-                setHref('nav-cta', 'tel:' + h.phone);
-                setHref('cta-phone', 'tel:' + h.phone);
-                set('cta-phone', h.phone);
-                setHref('cta-btn', 'tel:' + h.phone);
-                setHref('footer-phone', 'tel:' + h.phone);
-                set('footer-phone', h.phone);
-                setHref('drawer-phone', 'tel:' + h.phone);
-                set('drawer-phone', h.phone);
-            }
-            if (!isToken(h.ctaText)) {
-                var heroCta = document.getElementById('hero-cta');
-                if (heroCta) {
-                    var ctaSvg = heroCta.querySelector('svg');
-                    heroCta.textContent = h.ctaText;
-                    if (ctaSvg) heroCta.prepend(ctaSvg);
+                if (hl) {
+                    var b = isToken(cfg.hero.headlineB) ? '' : cfg.hero.headlineB;
+                    hl.innerHTML = cfg.hero.headlineA + (b ? '<br><em>' + b + '</em>' : '');
                 }
             }
-            setSrc('hero-img', h.image);
-
-            // Trust strip
-            var trustEl = document.getElementById('trust-strip');
-            if (trustEl) {
-                var defaultTrust = [
-                    { label: 'Licensed',  detail: 'PRC Licensed Plumber' },
-                    { label: 'Insured',   detail: 'Fully Bonded & Insured' },
-                    { label: 'Same Day',  detail: 'Emergency Response Available' }
-                ];
-                var trust = SITE_CONFIG.trust;
-                var allTTok = trust.every(function (t) { return isToken(t.label); });
-                var tItems = allTTok ? defaultTrust : trust.map(function (t, i) {
-                    return {
-                        label:  isToken(t.label)  ? defaultTrust[i].label  : t.label,
-                        detail: isToken(t.detail) ? defaultTrust[i].detail : t.detail
-                    };
-                });
-                trustEl.innerHTML = tItems.map(function (t, i) {
-                    return '<div class="trust__item reveal" style="transition-delay:' + (i * 0.08) + 's">' +
-                        '<svg class="trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">' +
-                            '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>' +
-                        '</svg>' +
-                        '<div>' +
-                            '<p class="trust__label">' + t.label + '</p>' +
-                            '<p class="trust__detail">' + t.detail + '</p>' +
-                        '</div>' +
-                    '</div>';
-                }).join('');
+            if (!isToken(cfg.hero.image)) {
+                var hi = document.getElementById('hero-img');
+                if (hi) { hi.src = cfg.hero.image; hi.alt = brand + ' interior'; hi.removeAttribute('aria-hidden'); }
             }
 
-            // Services
-            var grid = document.getElementById('services-grid');
-            if (grid) {
-                var defaultSvcs = [
-                    { name: 'Drain Cleaning',      description: 'Clogged sinks, floor drains, sewer lines.' },
-                    { name: 'Leak Repair',          description: 'Pipes, faucets, under-sink, water heater.' },
-                    { name: 'Toilet Repair',        description: 'Running, leaking, or won\'t flush.' },
-                    { name: 'Water Heater',         description: 'Installation, repair, and replacement.' },
-                    { name: 'Pipe Installation',    description: 'New pipes, fittings, and relocations.' },
-                    { name: 'Emergency Plumbing',   description: 'Available 7 days, fast response time.' }
-                ];
-                var svcs = SITE_CONFIG.services;
-                var allTok = svcs.every(function (s) { return isToken(s.name); });
-                var items = allTok ? defaultSvcs : svcs.map(function (s, i) {
-                    return {
-                        name:        isToken(s.name)        ? defaultSvcs[i].name        : s.name,
-                        description: isToken(s.description) ? defaultSvcs[i].description : s.description
-                    };
-                });
-                grid.innerHTML = items.map(function (s, i) {
-                    return '<div class="service-item reveal" style="transition-delay:' + (i * 0.05) + 's">' +
-                        '<div class="service__bar"></div>' +
-                        '<div>' +
-                            '<p class="service__name">' + s.name + '</p>' +
-                            '<p class="service__desc">' + s.description + '</p>' +
-                        '</div>' +
-                    '</div>';
-                }).join('');
-            }
+            // Menu
+            setText('menu-heading',    cfg.menu.heading);
+            setText('menu-subheading', cfg.menu.subheading);
+            var menuList = document.getElementById('menu-list');
+            var defaultItems = [
+                { name: 'Kape Barako',     description: 'Bold Batangas blend, no frills.',       price: '₱120' },
+                { name: 'Kape Latte',      description: 'Smooth and creamy, just right.',        price: '₱145' },
+                { name: 'Matcha Latte',    description: 'Japanese matcha, locally brewed.',      price: '₱160' },
+                { name: 'Mocha Champorado',description: 'Filipino chocolate rice, coffee twist.',price: '₱155' }
+            ];
+            var items = cfg.menu.items.filter(function(it) { return !isToken(it.name); });
+            if (!items.length) items = defaultItems;
+            items.slice(0, 4).forEach(function (item, i) {
+                var li  = document.createElement('li');
+                li.className = 'menu__item reveal';
+                li.style.transitionDelay = (i * 0.06) + 's';  // stagger cascade
+                var num = ('0' + (i + 1)).slice(-2);
+                var src = (!item.image || isToken(item.image))
+                    ? 'https://placehold.co/160x160/78350F/FEF3C7?text=%E2%80%8B'
+                    : item.image;
+                li.innerHTML =
+                    '<span class="menu__num">' + num + '</span>' +
+                    '<div class="menu__info">' +
+                        '<span class="menu__name">' + item.name + '</span>' +
+                        (item.description && !isToken(item.description)
+                            ? '<span class="menu__desc">' + item.description + '</span>' : '') +
+                    '</div>' +
+                    '<div class="menu__img-wrap">' +
+                        '<img src="' + src + '" alt="' + item.name + '" loading="lazy">' +
+                    '</div>' +
+                    '<span class="menu__price">' + (isToken(item.price) ? '' : item.price) + '</span>';
+                menuList.appendChild(li);
+            });
 
             // About
-            var ab = SITE_CONFIG.about;
-            if (!isToken(ab.year)) set('about-year', 'Est. ' + ab.year);
-            if (!isToken(ab.headlineA) && !isToken(ab.headlineB)) {
-                var abHl = document.getElementById('about-heading');
-                if (abHl) abHl.innerHTML = ab.headlineA + '<br><span>' + ab.headlineB + '</span>';
+            if (!isToken(cfg.about.year)) setText('about-year', 'Since ' + cfg.about.year);
+            setText('about-body', cfg.about.body);
+            if (!isToken(cfg.about.headlineA)) {
+                var ah = document.getElementById('about-heading');
+                if (ah) {
+                    var ab = isToken(cfg.about.headlineB) ? '' : cfg.about.headlineB;
+                    ah.innerHTML = cfg.about.headlineA + (ab ? '<br><em>' + ab + '</em>' : '');
+                }
             }
-            set('about-body', ab.body);
-            setSrc('about-img', ab.image);
-
-            // Coverage
-            var cov = SITE_CONFIG.coverage;
-            set('cov-heading', cov.heading);
-            set('cov-areas', cov.neighborhoods);
-            if (!isToken(cov.mapsEmbed)) {
-                var mapEl = document.getElementById('cov-map');
-                if (mapEl) mapEl.src = cov.mapsEmbed;
+            if (!isToken(cfg.about.image)) {
+                var ai = document.getElementById('about-img');
+                if (ai) { ai.src = cfg.about.image; ai.alt = 'Inside ' + brand; ai.removeAttribute('aria-hidden'); }
             }
 
-            // Contact CTA hours
-            var ct = SITE_CONFIG.contact;
-            if (!isToken(ct.hours)) set('cta-hours', ct.hours);
-            if (!isToken(ct.facebook)) setHref('social-fb', ct.facebook);
-            if (!isToken(ct.instagram)) setHref('social-ig', ct.instagram);
-
-            // SEO JSON-LD + title
-            var jld = document.getElementById('seo-jsonld');
-            if (jld) {
-                try {
-                    var data = JSON.parse(jld.textContent);
-                    if (!isToken(n.brandName)) { data.name = n.brandName; document.title = n.brandName; }
-                    if (!isToken(h.phone)) data.telephone = h.phone;
-                    jld.textContent = JSON.stringify(data, null, 2);
-                } catch (e) {}
-            }
-        })();
-
-        /* =====================================================================
-           3. HAMBURGER
-        ===================================================================== */
-        (function () {
-            var btn    = document.getElementById('hamburger');
-            var drawer = document.getElementById('drawer');
-            var open   = false;
-            if (!btn || !drawer) return;
-            btn.addEventListener('click', function () {
-                open = !open;
-                drawer.classList.toggle('open', open);
-                btn.setAttribute('aria-expanded', String(open));
-                btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            // Gallery
+            setText('gallery-heading', cfg.gallery.heading);
+            var grid = document.getElementById('gallery-grid');
+            var galColors = ['78350F/FEF3C7','451A03/FDE68A','D97706/451A03','78350F/FDE68A','451A03/FEF3C7','D97706/FEF3C7'];
+            var galSizes  = ['800x280','400x280','400x280','400x280','400x280','400x280'];
+            cfg.gallery.images.forEach(function (src, i) {
+                var tile = document.createElement('div');
+                tile.className = 'gallery__tile reveal';
+                tile.style.transitionDelay = (i * 0.05) + 's';  // stagger cascade
+                var imgSrc = isToken(src)
+                    ? 'https://placehold.co/' + galSizes[i] + '/' + galColors[i] + '?text=%E2%80%8B'
+                    : src;
+                tile.innerHTML = '<img src="' + imgSrc + '" alt="Gallery photo ' + (i + 1) + '" loading="lazy">';
+                grid.appendChild(tile);
             });
-        })();
-        function closeDrawer() {
-            var drawer = document.getElementById('drawer');
-            var btn    = document.getElementById('hamburger');
-            if (drawer) drawer.classList.remove('open');
-            if (btn)    btn.setAttribute('aria-expanded', 'false');
-        }
 
-        /* =====================================================================
-           4. SCROLL REVEAL
-        ===================================================================== */
+            // Hours
+            setText('visit-heading', cfg.hours.heading);
+            var hoursList   = document.getElementById('hours-list');
+            var defaultDays = [
+                { label: 'Mon - Fri', time: '7:00 AM - 8:00 PM' },
+                { label: 'Saturday',  time: '8:00 AM - 9:00 PM' },
+                { label: 'Sunday',    time: '9:00 AM - 6:00 PM' }
+            ];
+            var days = cfg.hours.days.filter(function(day) { return !isToken(day.label); });
+            if (!days.length) days = defaultDays;
+            days.forEach(function (day) {
+                var li = document.createElement('li');
+                li.className = 'visit__hours-row';
+                li.innerHTML =
+                    '<span class="visit__day">'  + day.label + '</span>' +
+                    '<span class="visit__time">' + (isToken(day.time) ? '' : day.time) + '</span>';
+                hoursList.appendChild(li);
+            });
+            if (!isToken(cfg.hours.address)) {
+                var addrEl = document.getElementById('visit-address');
+                if (addrEl) addrEl.innerHTML = cfg.hours.address.replace(',', ',<br>');
+            }
+            if (!isToken(cfg.hours.mapsEmbed)) setAttr('map-iframe', 'src', cfg.hours.mapsEmbed);
+
+            // Footer
+            setText('footer-brand', cfg.nav.brandName);
+            if (!isToken(cfg.contact.phone)) {
+                var ph = document.getElementById('footer-phone');
+                if (ph) { ph.textContent = cfg.contact.phone; ph.href = 'tel:' + cfg.contact.phone; }
+            }
+            if (!isToken(cfg.contact.facebook))  setAttr('social-fb', 'href', cfg.contact.facebook);
+            if (!isToken(cfg.contact.instagram)) setAttr('social-ig', 'href', cfg.contact.instagram);
+            setText('footer-copy', '© ' + new Date().getFullYear() + ' ' + brand + '. All rights reserved.');
+
+            // SEO
+            var seo     = cfg.seo;
+            var city    = !isToken(seo.city)     ? seo.city     : 'Paranaque';
+            var prov    = !isToken(seo.province) ? seo.province : 'NCR';
+            var title   = !isToken(seo.templateTitle)
+                ? seo.templateTitle
+                : brand + ' | Coffee Shop in ' + city;
+            var desc    = !isToken(seo.description)
+                ? seo.description
+                : 'Visit ' + brand + ' in ' + city + ', ' + prov + '. Premium coffee brewed fresh daily.';
+            var keywords = !isToken(seo.keywords)
+                ? seo.keywords
+                : 'cafe, coffee shop, ' + city.toLowerCase() + ', kape, local coffee';
+
+            document.title = title;
+            document.querySelector('meta[name="description"]').content = desc;
+            document.querySelector('meta[name="keywords"]').content    = keywords;
+            document.querySelector('meta[property="og:title"]').content       = title;
+            document.querySelector('meta[property="og:description"]').content = desc;
+            if (!isToken(seo.image)) document.querySelector('meta[property="og:image"]').content = seo.image;
+            if (seo.url)             document.querySelector('meta[property="og:url"]').content   = seo.url;
+
+            try {
+                var ld = JSON.parse(document.getElementById('seo-jsonld').textContent);
+                ld.name = brand; ld.description = desc;
+                if (!isToken(cfg.contact.phone)) ld.telephone = cfg.contact.phone;
+                if (!isToken(seo.image)) ld.image = seo.image;
+                if (seo.url)             ld.url   = seo.url;
+                if (!isToken(cfg.hours.address)) {
+                    var parts = cfg.hours.address.split(',');
+                    ld.address.streetAddress  = (parts[0] || '').trim();
+                    ld.address.addressLocality = city;
+                    ld.address.addressRegion   = prov;
+                }
+                document.getElementById('seo-jsonld').textContent = JSON.stringify(ld, null, 2);
+            } catch (e) { /* skip on malformed JSON-LD */ }
+        })();
+
+        /* ============================================================
+           SCROLL REVEAL — IntersectionObserver
+           ============================================================ */
         (function () {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             var io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
                 });
             }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
             document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
@@ -1089,6 +1087,27 @@
                 document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) { el.classList.add('visible'); });
             }, 1600);
         })();
+
+        /* ============================================================
+           MOBILE NAV
+           ============================================================ */
+        (function () {
+            var btn    = document.getElementById('hamburger');
+            var drawer = document.getElementById('nav-drawer');
+            if (!btn || !drawer) return;
+            btn.addEventListener('click', function () {
+                var open = drawer.classList.toggle('open');
+                btn.setAttribute('aria-expanded', String(open));
+                drawer.setAttribute('aria-hidden',  String(!open));
+            });
+        })();
+
+        function closeDrawer() {
+            var drawer = document.getElementById('nav-drawer');
+            var btn    = document.getElementById('hamburger');
+            if (drawer) { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+            if (btn)    btn.setAttribute('aria-expanded', 'false');
+        }
     </script>
 </body>
 </html>
