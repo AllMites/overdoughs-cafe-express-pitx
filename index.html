@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trades</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json" id="seo-jsonld">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "",
+        "image": "",
+        "telephone": "",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "",
+            "addressLocality": "",
+            "addressRegion": "",
+            "addressCountry": "PH"
+        },
+        "url": "",
+        "description": "",
+        "priceRange": "₱₱"
+    }
+    </script>
+
+    <!-- Space Grotesk (strong technical display) + DM Sans (clean body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ======================================================================= -->
+    <!-- === EDIT HERE === -->
+    <!--
+         TO RESKIN:
+           Option A (manual): Edit SITE_CONFIG below. Save, open in browser.
+           Option B (automated): Fill config.json, run: node replace.js
+
+         DUAL-TRADE SUPPORT:
+           Plumber     → bg #F9F7F4 warm white, accent #B84B2A terracotta (default)
+           Electrician → bg #F3F6FB cool white, text #14213D navy, accent #1D4ED8 electric blue
+           Set THEME_COLOR_* tokens accordingly.
+    -->
+    <script>
+        const SITE_CONFIG = {
+            // 1. BRAND COLORS & FONTS
+            theme: {
+                colors: {
+                    background: "#FAF9F6",      // #F9F7F4 warm white (plumber)  | #F3F6FB cool white (electrician)
+                    text:       "#1B2A4A",    // #1C2433 deep navy   (plumber)  | #14213D navy ink (electrician)
+                    accent:     "#E2583E",  // #B84B2A terracotta  (plumber)  | #1D4ED8 electric blue (electrician)
+                    surface:    "#EAE6DF", // #EDE8DF warm stone  (plumber)  | #E5EBF5 cool surface (electrician)
+                    border:     "#D2CAC0"   // #D2CCB8 warm muted  (plumber)  | #C4CEE0 cool divider (electrician)
+                },
+                fonts: {
+                    heading: "'Space Grotesk', sans-serif", // 'Space Grotesk', sans-serif
+                    body:    "'DM Sans', sans-serif"     // 'DM Sans', sans-serif
+                }
+            },
+
+            // 2. NAV
+            nav: {
+                brandName: "Overdoughs Cafe Express PITX",   // e.g. "RJ Plumbing"
+                phone:     "",   // shown in nav on desktop
+                cta:       "Contact Us",     // e.g. "Call Now"
+                ctaLink:   "tel:" // e.g. "tel:+639123456789"
+            },
+
+            // 3. HERO (trust-first: phone is primary CTA)
+            hero: {
+                eyebrow:   "340 ★",   // e.g. "Licensed & Insured · Parañaque NCR"
+                headlineA: "Overdoughs Cafe Express PITX", // e.g. "Clogged drains."
+                headlineB: "Pastry shop", // e.g. "Fixed today."
+                phone:     "",      // large phone number display
+                ctaText:   "Call Now",   // e.g. "Call Now"
+                ctaLink:   "tel:",   // e.g. "tel:+639123456789"
+                image:     "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop"        // placehold.co or real URL
+            },
+
+            // 4. TRUST MARKERS (3 — displayed as horizontal strip, NOT cards)
+            trust: [
+                { label: "{{TRUST_1_LABEL}}", detail: "{{TRUST_1_DETAIL}}" },
+                { label: "{{TRUST_2_LABEL}}", detail: "{{TRUST_2_DETAIL}}" },
+                { label: "{{TRUST_3_LABEL}}", detail: "{{TRUST_3_DETAIL}}" }
+            ],
+
+            // 5. SERVICES (6 items — no prices, trades quote per job)
+            services: [
+                { name: "Service 1", description: "" },
+                { name: "Service 2", description: "" },
+                { name: "Service 3", description: "" },
+                { name: "Service 4", description: "" },
+                { name: "Service 5", description: "" },
+                { name: "Service 6", description: "" }
+            ],
+
+            // 6. ABOUT
+            about: {
+                headlineA: "About Overdoughs Cafe Express PITX", // e.g. "Local work,"
+                headlineB: "Pastry shop", // e.g. "done properly."
+                body:      "Overdoughs Cafe Express PITX in Parañaque.",        // 2-3 sentences
+                image:     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=800&fit=crop",
+                year:      ""
+            },
+
+            // 7. COVERAGE (service area)
+            coverage: {
+                heading:       "Service Area",  // e.g. "We Cover"
+                neighborhoods: "Paranaque, Metro Manila",    // comma-sep: "BF Homes, Sucat, Las Pinas..."
+                mapsEmbed:     "https://maps.google.com/maps?q=+Pitx,+Parañaque,+1701+Metro+Manila&output=embed"
+            },
+
+            // 8. CONTACT
+            contact: {
+                phone:     "",
+                hours:     "TODO: hours",  // e.g. "Mon-Sat 7AM-8PM, Sun 8AM-5PM"
+                facebook:  "",
+                instagram: ""
+            }
+        };
+    </script>
+
+    <style>
+        /* ============================================================
+           CSS VARIABLES — injected from SITE_CONFIG by JS
+           Default: plumber palette (warm white + terracotta)
+        ============================================================ */
+        :root {
+            /* palette — JS-injected from SITE_CONFIG */
+            --bg:     #F9F7F4;
+            --text:   #1C2433;
+            --accent: #B84B2A;
+            --surf:   #EDE8DF;
+            --bord:   #D2CCB8;
+
+            /* derived ink — always follows the injected palette, never hardcode rgba.
+               Panels (trust strip, contact CTA) use --text as background, so their
+               ink derives from --bg: correct in BOTH plumber and electrician themes. */
+            --ink-muted:      color-mix(in srgb, var(--text) 62%, transparent);
+            --ink-faint:      color-mix(in srgb, var(--text) 42%, transparent);
+            --on-panel:       var(--bg);
+            --on-panel-muted: color-mix(in srgb, var(--bg) 55%, transparent);
+            --on-panel-line:  color-mix(in srgb, var(--bg) 15%, transparent);
+
+            /* type scale — 1.25 major third */
+            --fs-2xs:  0.72rem;
+            --fs-xs:   0.8rem;
+            --fs-sm:   0.875rem;
+            --fs-base: 1rem;
+            --fs-md:   1.125rem;
+            --fs-h3:   clamp(1.85rem, 4vw, 3rem);
+            --fs-h2:   clamp(2rem, 5vw, 3.5rem);
+            --fs-h1:   clamp(2.5rem, 6vw, 5.5rem);
+
+            /* rhythm */
+            --sec-pad: clamp(4.5rem, 10vh, 7rem);
+            --gutter:  clamp(1.5rem, 5vw, 4rem);
+
+            --font-h: 'Space Grotesk', sans-serif;
+            --font-b: 'DM Sans', system-ui, sans-serif;
+            --nav-h:  68px;
+            --r:      4px;
+        }
+
+        /* ============================================================
+           RESET + BASE
+        ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-b);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+        button { border: none; cursor: pointer; font-family: var(--font-b); }
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: var(--r);
+        }
+        ::selection { background: var(--accent); color: #fff; }
+        section[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
+        h1, h2, h3 { text-wrap: balance; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        /* ============================================================
+           SCROLL REVEAL
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            height: var(--nav-h);
+            background: var(--bg);
+            border-bottom: 1px solid var(--bord);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(1.25rem, 4vw, 3rem);
+            gap: 1rem;
+        }
+        .nav__brand {
+            font-family: var(--font-h);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            color: var(--text);
+            flex-shrink: 0;
+        }
+        .nav__phone {
+            font-family: var(--font-h);
+            font-size: var(--fs-sm);
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: -0.01em;
+            flex: 1;
+            text-align: center;
+        }
+        @media (max-width: 767px) { .nav__phone { display: none; } }
+        .nav__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.65rem 1.4rem;
+            border-radius: var(--r);
+            font-size: var(--fs-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 180ms ease, transform 180ms ease;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .nav__cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .nav__cta:active { transform: translateY(0); }
+
+        .nav__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            padding: 4px;
+        }
+        .nav__hamburger span {
+            display: block;
+            width: 22px; height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all 200ms ease;
+        }
+        @media (max-width: 480px) { .nav__hamburger { display: flex; } }
+        @media (max-width: 480px) { .nav__cta { display: none; } }
+
+        .nav__drawer {
+            display: none;
+            position: fixed;
+            top: var(--nav-h); left: 0; right: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--bord);
+            padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 2rem;
+            z-index: 99;
+        }
+        .nav__drawer.open { display: block; }
+        .nav__drawer__phone {
+            font-family: var(--font-h);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--bord);
+            display: block;
+        }
+        .nav__drawer a {
+            color: var(--text);
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            display: block;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--bord);
+            transition: color 150ms ease;
+        }
+        .nav__drawer a:last-child { border-bottom: none; }
+        .nav__drawer a:hover { color: var(--accent); }
+
+        /* ============================================================
+           HERO — phone is the primary CTA
+        ============================================================ */
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            padding-top: var(--nav-h);
+        }
+        .hero__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+        }
+        .hero__eyebrow {
+            font-size: var(--fs-2xs);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+        .hero__headline {
+            font-family: var(--font-h);
+            font-size: var(--fs-h1);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .hero__headline span {
+            color: var(--accent);
+            display: block;
+        }
+        .hero__phone {
+            font-family: var(--font-h);
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--accent);
+            margin: 1.25rem 0 2rem;
+            line-height: 1;
+        }
+        .hero__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.9rem 2rem;
+            border-radius: var(--r);
+            font-family: var(--font-h);
+            font-size: var(--fs-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 200ms ease, transform 200ms ease;
+            align-self: flex-start;
+        }
+        .hero__cta svg { transition: transform 200ms ease; }
+        .hero__cta:hover { opacity: 0.88; transform: translateY(-2px); }
+        .hero__cta:hover svg { transform: translateX(3px); }
+        .hero__cta:active { transform: translateY(0); }
+        /* hero load cascade — after .hero__cta so its `transition` shorthand doesn't reset these delays */
+        .hero__eyebrow { transition-delay: 0.05s; }
+        .hero__headline { transition-delay: 0.15s; }
+        .hero__phone { transition-delay: 0.25s; }
+        .hero__cta { transition-delay: 0.35s; }
+        .hero__cta:hover, .hero__cta:active { transition-delay: 0s; }
+
+        .hero__image-panel {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero__image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero__image-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--bg) 0%, transparent 25%);
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 240px;
+                min-height: auto;
+            }
+            .hero__content { padding: 3rem 1.5rem 2.5rem; }
+            .hero__image-panel::after {
+                background: linear-gradient(to bottom, var(--bg) 0%, transparent 20%);
+            }
+        }
+
+        /* ============================================================
+           TRUST STRIP — horizontal band, NOT equal cards
+        ============================================================ */
+        .trust {
+            background: var(--text);
+            padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .trust__item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 2rem;
+            flex: 1;
+            min-width: 160px;
+            max-width: 280px;
+        }
+        .trust__item + .trust__item {
+            border-left: 1px solid var(--on-panel-line);
+        }
+        .trust__icon {
+            width: 32px; height: 32px;
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+        .trust__label {
+            font-family: var(--font-h);
+            font-size: var(--fs-sm);
+            font-weight: 600;
+            color: var(--on-panel);
+            line-height: 1.2;
+        }
+        .trust__detail {
+            font-size: var(--fs-2xs);
+            color: var(--on-panel-muted);
+            margin-top: 1px;
+        }
+        @media (max-width: 640px) {
+            .trust { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+            .trust__item { border-left: none; border-bottom: 1px solid var(--on-panel-line); padding: 0.75rem 0; max-width: none; }
+            .trust__item:last-child { border-bottom: none; }
+        }
+
+        /* ============================================================
+           SERVICES
+        ============================================================ */
+        .services {
+            background: var(--surf);
+            padding: var(--sec-pad) var(--gutter);
+        }
+        .services__header {
+            margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+        }
+        .services__eyebrow {
+            font-size: var(--fs-2xs);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .services__heading {
+            font-family: var(--font-h);
+            font-size: var(--fs-h2);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+        }
+        .services__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--bord);
+        }
+        .service-item:nth-child(odd)  { padding-right: 3rem; border-right: 1px solid var(--bord); }
+        .service-item:nth-child(even) { padding-left: 3rem; }
+        .service-item:nth-last-child(-n+2) { border-bottom: none; }
+        .service__bar {
+            width: 3px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .service__name {
+            font-family: var(--font-h);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
+        }
+        .service__desc {
+            font-size: var(--fs-xs);
+            color: var(--ink-muted);
+            line-height: 1.55;
+        }
+
+        @media (max-width: 640px) {
+            .services__grid { grid-template-columns: 1fr; }
+            .service-item:nth-child(odd)  { padding-right: 0; border-right: none; }
+            .service-item:nth-child(even) { padding-left: 0; }
+            .service-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--bord); }
+            .service-item:last-child { border-bottom: none; }
+        }
+
+        /* ============================================================
+           ABOUT
+        ============================================================ */
+        .about {
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            min-height: 500px;
+        }
+        .about__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(3.5rem, 9vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+            background: var(--bg);
+        }
+        .about__year {
+            font-size: var(--fs-2xs);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+        .about__heading {
+            font-family: var(--font-h);
+            font-size: var(--fs-h3);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .about__heading span { color: var(--accent); }
+        .about__body {
+            font-size: clamp(0.9375rem, 1.3vw, 1rem);
+            color: var(--ink-muted);
+            max-width: 46ch;
+            line-height: 1.8;
+        }
+        .about__image {
+            position: relative;
+            overflow: hidden;
+        }
+        .about__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 767px) {
+            .about { grid-template-columns: 1fr; min-height: auto; }
+            .about__image { min-height: 260px; }
+        }
+
+        /* ============================================================
+           COVERAGE
+        ============================================================ */
+        .coverage {
+            background: var(--surf);
+            padding: var(--sec-pad) var(--gutter);
+        }
+        .coverage__heading {
+            font-family: var(--font-h);
+            font-size: var(--fs-h3);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+        }
+        .coverage__areas {
+            font-size: var(--fs-sm);
+            color: var(--ink-muted);
+            margin-bottom: clamp(2rem, 5vh, 3.5rem);
+            max-width: 60ch;
+            line-height: 1.7;
+        }
+        .coverage__map {
+            border-radius: var(--r);
+            overflow: hidden;
+            border: 1px solid var(--bord);
+            background: var(--bg);
+        }
+        .coverage__map iframe {
+            width: 100%;
+            aspect-ratio: 16/7;
+            display: block;
+            border: none;
+        }
+        @media (max-width: 640px) {
+            .coverage__map iframe { aspect-ratio: 4/3; }
+        }
+
+        /* ============================================================
+           CONTACT CTA — large phone, hours
+        ============================================================ */
+        .contact-cta {
+            background: var(--text);
+            padding: var(--sec-pad) var(--gutter);
+            text-align: center;
+        }
+        .contact-cta__eyebrow {
+            font-size: var(--fs-2xs);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--on-panel-muted);
+            margin-bottom: 1rem;
+        }
+        .contact-cta__phone {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: opacity 180ms ease;
+        }
+        .contact-cta__phone:hover { opacity: 0.85; }
+        .contact-cta__hours {
+            font-size: var(--fs-sm);
+            color: var(--on-panel-muted);
+            margin-bottom: 2.5rem;
+        }
+        .contact-cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: var(--r);
+            font-family: var(--font-h);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 180ms ease, transform 180ms ease;
+        }
+        .contact-cta__btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .contact-cta__btn:active { transform: translateY(0); }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--bord);
+            padding: clamp(2.5rem, 6vh, 4rem) clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 3vh, 2rem);
+        }
+        .footer__top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--bord);
+            margin-bottom: 1.5rem;
+        }
+        .footer__brand {
+            font-family: var(--font-h);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .footer__tagline {
+            font-size: var(--fs-xs);
+            color: var(--ink-faint);
+        }
+        .footer__col-heading {
+            font-size: var(--fs-2xs);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.875rem;
+        }
+        .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+        .footer__col a {
+            font-size: var(--fs-xs);
+            color: var(--ink-muted);
+            transition: color 150ms ease;
+        }
+        .footer__col a:hover { color: var(--text); }
+        .footer__social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.6rem;
+        }
+        .footer__social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            border: 1px solid var(--bord);
+            border-radius: var(--r);
+            color: var(--ink-muted);
+            transition: border-color 150ms ease, color 150ms ease;
+        }
+        .footer__social a:hover { border-color: var(--accent); color: var(--accent); }
+        .footer__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .footer__copy {
+            font-size: var(--fs-2xs);
+            color: var(--ink-faint);
+        }
+        @media (max-width: 767px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .footer__top { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a class="nav__brand" href="#" id="nav-brand">RJ Plumbing</a>
+        <a class="nav__phone" href="tel:" id="nav-phone">+63 912 345 6789</a>
+        <a class="nav__cta" href="tel:" id="nav-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            Call Now
+        </a>
+        <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <nav class="nav__drawer" id="drawer" aria-label="Mobile navigation">
+        <a class="nav__drawer__phone" href="tel:" id="drawer-phone">+63 912 345 6789</a>
+        <a href="#services" onclick="closeDrawer()">Services</a>
+        <a href="#about"    onclick="closeDrawer()">About</a>
+        <a href="#coverage" onclick="closeDrawer()">Service Area</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-label="Hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow reveal" id="hero-eyebrow">Licensed &amp; Insured &middot; Parañaque NCR</p>
+            <h1 class="hero__headline reveal" id="hero-headline">Clogged drains.<span>Fixed today.</span></h1>
+            <a class="hero__phone reveal" href="tel:" id="hero-phone-link">
+                <span id="hero-phone">+63 912 345 6789</span>
+            </a>
+            <a class="hero__cta reveal" href="tel:" id="hero-cta">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                Call Now
+            </a>
+        </div>
+        <div class="hero__image-panel">
+            <img src="https://placehold.co/800x1000/EDE8DF/B84B2A?text=%E2%80%8B" id="hero-img" alt="" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust" id="trust-strip" aria-label="Why choose us">
+        <!-- populated by JS -->
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services" aria-label="Services">
+        <div class="services__header reveal">
+            <h2 class="services__heading" id="services-heading">Services</h2>
+        </div>
+        <div class="services__grid" id="services-grid">
+            <!-- populated by JS -->
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-label="About">
+        <div class="about__content">
+            <p class="about__year reveal" id="about-year">Est. 2010</p>
+            <h2 class="about__heading reveal" id="about-heading">Local work,<br><span>done properly.</span></h2>
+            <p class="about__body reveal" id="about-body">Based in BF Homes, we have been handling residential and commercial plumbing in Parañaque for over a decade. We show up on time, price fairly, and stand behind every job.</p>
+        </div>
+        <div class="about__image">
+            <img src="https://placehold.co/800x900/D2CCB8/B84B2A?text=%E2%80%8B" id="about-img" alt="" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- COVERAGE -->
+    <section class="coverage" id="coverage" aria-label="Service area">
+        <h2 class="coverage__heading reveal" id="cov-heading">We Cover</h2>
+        <p class="coverage__areas reveal" id="cov-areas">BF Homes, Sucat, Las Pinas, Alabang, Paranaque City, and surrounding neighborhoods.</p>
+        <div class="coverage__map reveal">
+            <iframe title="Service area" src="https://maps.google.com/maps?q=paranaque+city+hall&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="cov-map"></iframe>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="contact-cta" aria-label="Call us">
+        <p class="contact-cta__eyebrow reveal">Get in touch</p>
+        <a class="contact-cta__phone reveal" href="tel:" id="cta-phone">+63 912 345 6789</a>
+        <p class="contact-cta__hours reveal" id="cta-hours">Mon-Sat 7AM-8PM &middot; Sun 8AM-5PM</p>
+        <a class="contact-cta__btn reveal" href="tel:" id="cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            Call Now
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer__top">
+            <div>
+                <p class="footer__brand" id="footer-brand">RJ Plumbing</p>
+                <p class="footer__tagline">Licensed. Insured. Local.</p>
+            </div>
+            <div class="footer__col">
+                <p class="footer__col-heading">Contact</p>
+                <ul>
+                    <li><a href="tel:" id="footer-phone">+63 912 345 6789</a></li>
+                </ul>
+                <div class="footer__social">
+                    <a href="#" id="social-fb" aria-label="Facebook">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" id="social-ig" aria-label="Instagram">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <p class="footer__col-heading">Navigate</p>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#coverage">Service Area</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy" id="footer-copy">&copy; 2025 RJ Plumbing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* =====================================================================
+           1. INJECT SITE_CONFIG → CSS VARIABLES
+        ===================================================================== */
+        (function () {
+            var c = SITE_CONFIG.theme.colors;
+            var f = SITE_CONFIG.theme.fonts;
+            var d = document.documentElement;
+            function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
+            if (!isToken(c.background)) d.style.setProperty('--bg',     c.background);
+            if (!isToken(c.text))       d.style.setProperty('--text',   c.text);
+            if (!isToken(c.accent))     d.style.setProperty('--accent', c.accent);
+            if (!isToken(c.surface))    d.style.setProperty('--surf',   c.surface);
+            if (!isToken(c.border))     d.style.setProperty('--bord',   c.border);
+            if (!isToken(f.heading))    d.style.setProperty('--font-h', f.heading);
+            if (!isToken(f.body))       d.style.setProperty('--font-b', f.body);
+        })();
+
+        /* =====================================================================
+           2. POPULATE DOM FROM SITE_CONFIG
+        ===================================================================== */
+        (function () {
+            function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
+            function set(id, val) {
+                var el = document.getElementById(id);
+                if (el && !isToken(val)) el.textContent = val;
+            }
+            function setHref(id, val) {
+                var el = document.getElementById(id);
+                if (el && !isToken(val)) el.href = val;
+            }
+            function setSrc(id, val) {
+                var el = document.getElementById(id);
+                if (el && !isToken(val)) el.src = val;
+            }
+
+            var n = SITE_CONFIG.nav;
+            set('nav-brand', n.brandName);
+            set('footer-brand', n.brandName);
+            if (!isToken(n.phone)) {
+                setHref('nav-cta', 'tel:' + n.phone);
+                setHref('nav-phone', 'tel:' + n.phone);
+                set('nav-phone', n.phone);
+            }
+            if (!isToken(n.cta)) {
+                var navCta = document.getElementById('nav-cta');
+                if (navCta) {
+                    var svg = navCta.querySelector('svg');
+                    navCta.textContent = n.cta;
+                    if (svg) navCta.prepend(svg);
+                }
+            }
+
+            var h = SITE_CONFIG.hero;
+            set('hero-eyebrow', h.eyebrow);
+            if (!isToken(h.headlineA) && !isToken(h.headlineB)) {
+                var hl = document.getElementById('hero-headline');
+                if (hl) hl.innerHTML = h.headlineA + '<span>' + h.headlineB + '</span>';
+            }
+            if (!isToken(h.phone)) {
+                set('hero-phone', h.phone);
+                setHref('hero-phone-link', 'tel:' + h.phone);
+                setHref('hero-cta', 'tel:' + h.phone);
+                setHref('nav-cta', 'tel:' + h.phone);
+                setHref('cta-phone', 'tel:' + h.phone);
+                set('cta-phone', h.phone);
+                setHref('cta-btn', 'tel:' + h.phone);
+                setHref('footer-phone', 'tel:' + h.phone);
+                set('footer-phone', h.phone);
+                setHref('drawer-phone', 'tel:' + h.phone);
+                set('drawer-phone', h.phone);
+            }
+            if (!isToken(h.ctaText)) {
+                var heroCta = document.getElementById('hero-cta');
+                if (heroCta) {
+                    var ctaSvg = heroCta.querySelector('svg');
+                    heroCta.textContent = h.ctaText;
+                    if (ctaSvg) heroCta.prepend(ctaSvg);
+                }
+            }
+            setSrc('hero-img', h.image);
+
+            // Trust strip
+            var trustEl = document.getElementById('trust-strip');
+            if (trustEl) {
+                var defaultTrust = [
+                    { label: 'Licensed',  detail: 'PRC Licensed Plumber' },
+                    { label: 'Insured',   detail: 'Fully Bonded & Insured' },
+                    { label: 'Same Day',  detail: 'Emergency Response Available' }
+                ];
+                var trust = SITE_CONFIG.trust;
+                var allTTok = trust.every(function (t) { return isToken(t.label); });
+                var tItems = allTTok ? defaultTrust : trust.map(function (t, i) {
+                    return {
+                        label:  isToken(t.label)  ? defaultTrust[i].label  : t.label,
+                        detail: isToken(t.detail) ? defaultTrust[i].detail : t.detail
+                    };
+                });
+                trustEl.innerHTML = tItems.map(function (t, i) {
+                    return '<div class="trust__item reveal" style="transition-delay:' + (i * 0.08) + 's">' +
+                        '<svg class="trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">' +
+                            '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>' +
+                        '</svg>' +
+                        '<div>' +
+                            '<p class="trust__label">' + t.label + '</p>' +
+                            '<p class="trust__detail">' + t.detail + '</p>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // Services
+            var grid = document.getElementById('services-grid');
+            if (grid) {
+                var defaultSvcs = [
+                    { name: 'Drain Cleaning',      description: 'Clogged sinks, floor drains, sewer lines.' },
+                    { name: 'Leak Repair',          description: 'Pipes, faucets, under-sink, water heater.' },
+                    { name: 'Toilet Repair',        description: 'Running, leaking, or won\'t flush.' },
+                    { name: 'Water Heater',         description: 'Installation, repair, and replacement.' },
+                    { name: 'Pipe Installation',    description: 'New pipes, fittings, and relocations.' },
+                    { name: 'Emergency Plumbing',   description: 'Available 7 days, fast response time.' }
+                ];
+                var svcs = SITE_CONFIG.services;
+                var allTok = svcs.every(function (s) { return isToken(s.name); });
+                var items = allTok ? defaultSvcs : svcs.map(function (s, i) {
+                    return {
+                        name:        isToken(s.name)        ? defaultSvcs[i].name        : s.name,
+                        description: isToken(s.description) ? defaultSvcs[i].description : s.description
+                    };
+                });
+                grid.innerHTML = items.map(function (s, i) {
+                    return '<div class="service-item reveal" style="transition-delay:' + (i * 0.05) + 's">' +
+                        '<div class="service__bar"></div>' +
+                        '<div>' +
+                            '<p class="service__name">' + s.name + '</p>' +
+                            '<p class="service__desc">' + s.description + '</p>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // About
+            var ab = SITE_CONFIG.about;
+            if (!isToken(ab.year)) set('about-year', 'Est. ' + ab.year);
+            if (!isToken(ab.headlineA) && !isToken(ab.headlineB)) {
+                var abHl = document.getElementById('about-heading');
+                if (abHl) abHl.innerHTML = ab.headlineA + '<br><span>' + ab.headlineB + '</span>';
+            }
+            set('about-body', ab.body);
+            setSrc('about-img', ab.image);
+
+            // Coverage
+            var cov = SITE_CONFIG.coverage;
+            set('cov-heading', cov.heading);
+            set('cov-areas', cov.neighborhoods);
+            if (!isToken(cov.mapsEmbed)) {
+                var mapEl = document.getElementById('cov-map');
+                if (mapEl) mapEl.src = cov.mapsEmbed;
+            }
+
+            // Contact CTA hours
+            var ct = SITE_CONFIG.contact;
+            if (!isToken(ct.hours)) set('cta-hours', ct.hours);
+            if (!isToken(ct.facebook)) setHref('social-fb', ct.facebook);
+            if (!isToken(ct.instagram)) setHref('social-ig', ct.instagram);
+
+            // SEO JSON-LD + title
+            var jld = document.getElementById('seo-jsonld');
+            if (jld) {
+                try {
+                    var data = JSON.parse(jld.textContent);
+                    if (!isToken(n.brandName)) { data.name = n.brandName; document.title = n.brandName; }
+                    if (!isToken(h.phone)) data.telephone = h.phone;
+                    jld.textContent = JSON.stringify(data, null, 2);
+                } catch (e) {}
+            }
+        })();
+
+        /* =====================================================================
+           3. HAMBURGER
+        ===================================================================== */
+        (function () {
+            var btn    = document.getElementById('hamburger');
+            var drawer = document.getElementById('drawer');
+            var open   = false;
+            if (!btn || !drawer) return;
+            btn.addEventListener('click', function () {
+                open = !open;
+                drawer.classList.toggle('open', open);
+                btn.setAttribute('aria-expanded', String(open));
+                btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            });
+        })();
+        function closeDrawer() {
+            var drawer = document.getElementById('drawer');
+            var btn    = document.getElementById('hamburger');
+            if (drawer) drawer.classList.remove('open');
+            if (btn)    btn.setAttribute('aria-expanded', 'false');
+        }
+
+        /* =====================================================================
+           4. SCROLL REVEAL
+        ===================================================================== */
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
+            document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+            // safety net: never leave content hidden (slow loads, IO edge cases)
+            setTimeout(function () {
+                document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) { el.classList.add('visible'); });
+            }, 1600);
+        })();
+    </script>
+</body>
+</html>
