@@ -3,1111 +3,939 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overdoughs Cafe Express PITX | Pastry shop in Parañaque</title>
-    <meta name="description" content="Overdoughs Cafe Express PITX — 340 reviews, 4.9★ in Parañaque.">
-    <meta name="keywords" content="Overdoughs Cafe Express PITX, pastry shop Parañaque">
-
-    <meta property="og:title" content="Overdoughs Cafe Express PITX | Pastry shop in Parañaque">
-    <meta property="og:description" content="Overdoughs Cafe Express PITX — 340 reviews, 4.9★ in Parañaque.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://allmites.github.io/overdoughs-cafe-express-pitx/">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <script type="application/ld+json" id="seo-jsonld">
-    {
-        "@context": "https://schema.org",
-        "@type": "CafeOrCoffeeShop",
-        "name": "",
-        "image": "",
-        "telephone": "",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "",
-            "addressLocality": "",
-            "addressRegion": "",
-            "addressCountry": "PH"
-        },
-        "url": "",
-        "description": "",
-        "priceRange": "₱"
-    }
-    </script>
-
-    <!-- Playfair Display (editorial headings) + DM Sans (modern body) -->
+    <title>Cafe Website Template</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 
     <!-- ======================================================================= -->
     <!-- === EDIT HERE === -->
-    <!--
-         TO RESKIN:
-           Option A (manual): Edit SITE_CONFIG below. Save, open in browser.
-           Option B (automated): Fill config.json, run: node replace.js
-
-         {{TOKEN}} values are replaced by replace.js.
+    <!-- INSTRUCTIONS: 
+         Update this single block to completely reskin the website. 
+         Be careful not to delete the quotation marks ("") or commas (,)! 
     -->
     <script>
         const SITE_CONFIG = {
             // 1. BRAND COLORS & FONTS
             theme: {
                 colors: {
-                    background: "#FFF5E6",      // #FEF3C7 honey amber
-                    text:       "#3D1C02",    // #451A03 deep espresso
-                    accent:     "#C73E1D",  // #78350F coffee brown
-                    surface:    "#FFE8CC", // #FDE68A richer amber
-                    border:     "#E8D5C0"   // #D97706 warm amber line
+                    background: "#FAF7F2",  // Off-white / Crema
+                    text: "#2C3D2E",        // Deep Tropical Green
+                    accent: "#D95B43",      // Terracotta / Rattan
+                    surface: "#EFECE6",     // Slightly darker background for cards
+                    border: "#D6D2C9"       // Subtle lines
                 },
                 fonts: {
-                    heading: "'Playfair Display', serif", // 'Playfair Display', serif
-                    body:    "'DM Sans', sans-serif"     // 'DM Sans', sans-serif
+                    heading: "'Fraunces', serif",
+                    body: "'DM Sans', sans-serif"
                 }
             },
 
-            // 2. SEO
-            seo: {
-                templateTitle: "Overdoughs Cafe Express PITX | Pastry shop in Parañaque",
-                description:   "Overdoughs Cafe Express PITX — 340 reviews, 4.9★ in Parañaque.",
-                keywords:      "Overdoughs Cafe Express PITX, pastry shop Parañaque",
-                city:          "Parañaque",
-                province:      "NCR",
-                phone:         "",
-                image:         "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop",
-                url: null
-            },
-
-            // 3. NAVIGATION
-            nav: {
-                brandName: "Overdoughs Cafe Express PITX",  // e.g. "Kanto Coffee"
-                cta:       "Contact Us",    // e.g. "Book a Table"
-                ctaLink:   "tel:"     // e.g. "#visit"
-            },
-
-            // 4. HERO  (max 4 text elements: eyebrow, headline A+B, tagline, CTA)
+            // 2. HERO SECTION
             hero: {
-                eyebrow:   "340 reviews · Parañaque",    // e.g. "Est. 2019 · Parañaque"
-                headlineA: "Overdoughs Cafe Express PITX", // line 1
-                headlineB: "Pastry shop", // line 2, shown in italic
-                tagline:   "4.9★ rated pastry shop in Parañaque. 340 reviews.",    // max 20 words
-                ctaText:   "Call Now",   // "See the Menu"
-                ctaLink:   "tel:",   // "#menu"
-                image:     "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600&h=900&fit=crop"
+                businessName: "Kanto Coffee",
+                tagline: "Your neighborhood brew, elevated.",
+                buttonText: "See the Menu",
+                // Placeholder uses brand colors for a cohesive preview
+                backgroundImage: "https://placehold.co/1920x1080/2C3D2E/FAF7F2?text=Cafe+Storefront+Image" 
             },
 
-            // 5. MENU HIGHLIGHTS (4 items)
-            menu: {
-                heading:    "Our Menu",
-                subheading: "Popular items",
-                items: [
-                    { name: "Popular Item", description: "Our bestseller", price: "P150", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=400&fit=crop" },
-                    { name: "Customer Pick", description: "Crowd favorite", price: "P180", image: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&h=400&fit=crop" },
-                    { name: "Chef Special", description: "Recommended", price: "P200", image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=400&fit=crop" },
-                    { name: "Drinks", description: "Beverages", price: "P80", image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=400&fit=crop" }
-                ]
-            },
-
-            // 6. ABOUT
+            // 3. ABOUT SECTION
             about: {
-                headlineA: "About Overdoughs Cafe Express PITX", // "A cup is just a cup."
-                headlineB: "A Parañaque destination", // "Until it isn't." (italic)
-                body:      "Overdoughs Cafe Express PITX — 340 reviews, 4.9★. A popular pastry shop in Parañaque.",
-                image:     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=800&fit=crop",
-                year:      ""
+                title: "Our Story",
+                text: "Born on a busy street corner in BF Homes, Kanto Coffee elevates the daily Filipino habit of 'kape at kwentuhan'. We source premium local beans from the highlands of Atok to Mount Apo, serving them with authentic neighborhood warmth. Whether you're here for a quick morning pandesal or a slow afternoon pour-over, there's always a seat for you at the kanto.",
+                image: "https://placehold.co/800x1000/D95B43/FAF7F2?text=Barista+Pouring+Coffee"
             },
 
-            // 7. GALLERY (6 images)
-            gallery: {
-                heading: "Our Space",
-                images: [
-                    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=800&fit=crop", "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=800&fit=crop", "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&h=800&fit=crop",
-                    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=800&fit=crop", "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=800&fit=crop", "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=800&fit=crop"
-                ]
-            },
+            // 4. MENU HIGHLIGHTS (4 Items)
+            menuTitle: "Neighborhood Favorites",
+            menu: [
+                { 
+                    name: "Kape Barako Pour Over", 
+                    desc: "Single-origin Batangas beans, bold and earthy.", 
+                    price: "₱120" 
+                },
+                { 
+                    name: "Ube Macapuno Latte", 
+                    desc: "Signature espresso with sweet purple yam and coconut milk.", 
+                    price: "₱180" 
+                },
+                { 
+                    name: "Pandesal & Kesong Puti", 
+                    desc: "Warm artisanal pandesal with local white cheese and guava jam.", 
+                    price: "₱150" 
+                },
+                { 
+                    name: "Calamansi Espresso Tonic", 
+                    desc: "Refreshing iced espresso splashed with fresh calamansi and tonic.", 
+                    price: "₱160" 
+                }
+            ],
 
-            // 8. HOURS + LOCATION
-            hours: {
-                heading:   "Visit Us",
-                days: [
-                    { label: "Mon - Sat", time: "10:00 AM - 9:00 PM" },
-                    { label: "Sunday", time: "10:00 AM - 8:00 PM" },
-                    { label: "", time: "" }
-                ],
-                address:   "Pitx, Parañaque, 1701 Metro Manila",
-                mapsEmbed: "https://maps.google.com/maps?q= Pitx,+Parañaque,+1701+Metro+Manila&output=embed"
-            },
+            // 5. PHOTO GALLERY (Exactly 6 image URLs)
+            gallery: [
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Latte+Art",
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Cozy+Interior",
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Fresh+Pastries",
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Coffee+Beans",
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Exterior+Signage",
+                "https://placehold.co/800x800/EFECE6/2C3D2E?text=Happy+Customers"
+            ],
 
-            // 9. CONTACT
+            // 6. HOURS & LOCATION
+            locationTitle: "Visit the Kanto",
+            hours: [
+                { day: "Monday - Thursday", time: "7:00 AM - 8:00 PM" },
+                { day: "Friday - Saturday", time: "7:00 AM - 10:00 PM" },
+                { day: "Sunday", time: "8:00 AM - 6:00 PM" }
+            ],
             contact: {
-                phone:     "",
-                facebook:  "",
-                instagram: ""
+                address: "123 Aguirre Avenue, BF Homes, Parañaque, NCR",
+                phone: "+63 917 123 4567",
+                facebook: "https://facebook.com",
+                instagram: "https://instagram.com",
+                // Go to Google Maps -> Share -> Embed a map -> Copy HTML
+                mapIframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3863.0605988168273!2d121.0189!3d14.4526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDI3JzA5LjQiTiAxMjHCsDAxJzA4LjAiRQ!5e0!3m2!1sen!2sph!4v1620000000000!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
             }
         };
     </script>
+    <!-- === END EDIT HERE === -->
     <!-- ======================================================================= -->
 
+
+    <!-- SYSTEM STYLES (Do not edit unless modifying structural layout) -->
     <style>
-        /* ============================================================
-           CSS VARIABLES — injected from SITE_CONFIG by JS
-           ============================================================ */
+        /* CSS Variables mapped by JS */
         :root {
-            /* palette — JS-injected from SITE_CONFIG */
-            --bg:     #FEF3C7;
-            --text:   #451A03;
-            --accent: #78350F;
-            --surf:   #FDE68A;
-            --bord:   #D97706;
-
-            /* derived ink — always follows the injected palette, never hardcode rgba */
-            --ink-muted:     color-mix(in srgb, var(--text) 62%, transparent);
-            --ink-faint:     color-mix(in srgb, var(--text) 40%, transparent);
-            --line:          color-mix(in srgb, var(--bord) 45%, transparent);
-            /* dark panels (nav, about, footer) use --text as background */
-            --on-dark:       var(--bg);
-            --on-dark-muted: color-mix(in srgb, var(--bg) 62%, transparent);
-            --on-dark-faint: color-mix(in srgb, var(--bg) 40%, transparent);
-            --on-dark-line:  color-mix(in srgb, var(--bg) 14%, transparent);
-
-            /* type scale — 1.25 major third */
-            --fs-2xs:  0.72rem;
-            --fs-xs:   0.8rem;
-            --fs-sm:   0.875rem;
-            --fs-base: 1rem;
-            --fs-md:   1.125rem;
-            --fs-lg:   clamp(1.125rem, 1rem + 0.8vw, 1.45rem);
-            --fs-h3:   clamp(1.75rem, 4vw, 2.75rem);
-            --fs-h2:   clamp(2rem, 5vw, 3.75rem);
-            --fs-h1:   clamp(2.75rem, 7.5vw, 6.5rem);
-
-            /* rhythm */
-            --sec-pad: clamp(4.5rem, 10vw, 7.5rem);
-            --gutter:  clamp(1.5rem, 5vw, 4.5rem);
-
-            --font-h: 'Playfair Display', Georgia, serif;
-            --font-b: 'DM Sans', system-ui, sans-serif;
-            --nav-h:  68px;
-            --r:      4px;
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #000000;
+            --surface-color: #f4f4f4;
+            --border-color: #e0e0e0;
+            --font-heading: sans-serif;
+            --font-body: sans-serif;
         }
 
-        /* ============================================================
-           RESET + BASE
-           ============================================================ */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font-b);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
-        img { display: block; max-width: 100%; height: auto; }
-        a { color: inherit; text-decoration: none; }
-        button { border: none; cursor: pointer; font-family: var(--font-b); }
-        :focus-visible {
-            outline: 3px solid var(--accent);
-            outline-offset: 3px;
-            border-radius: var(--r);
-        }
-        ::selection { background: var(--accent); color: var(--bg); }
-        section[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
-        h1, h2, h3 { text-wrap: balance; }
-        a, button { -webkit-tap-highlight-color: transparent; }
-
-        /* ============================================================
-           SCROLL REVEAL — hidden until in view; JS fallback un-hides
-           everything after 1.6s so content can never stay invisible
-           ============================================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
-        }
-
-        /* ============================================================
-           NAVIGATION
-           ============================================================ */
-        .nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            height: var(--nav-h);
-            background: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 clamp(1.25rem, 4vw, 3rem);
-        }
-        .nav__brand {
-            font-family: var(--font-h);
-            font-size: clamp(1.05rem, 2vw, 1.3rem);
-            font-weight: 700;
-            color: var(--bg);
-            flex-shrink: 0;
-        }
-        .nav__links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav__links a {
-            color: var(--on-dark-muted);
-            font-size: var(--fs-sm);
-            font-weight: 500;
-            transition: color 180ms ease;
-        }
-        .nav__links a:hover { color: var(--bg); }
-        @media (max-width: 767px) { .nav__links { display: none; } }
-
-        .nav__cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 0.65rem 1.4rem;
-            border-radius: var(--r);
-            font-size: var(--fs-sm);
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 180ms ease, transform 180ms ease;
-            flex-shrink: 0;
-        }
-        .nav__cta:hover { background: color-mix(in srgb, var(--accent) 78%, #000); transform: translateY(-1px); }
-        .nav__cta:active { transform: translateY(0); }
-
-        .nav__hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            padding: 4px;
-        }
-        .nav__hamburger span {
-            display: block;
-            width: 22px; height: 2px;
-            background: var(--bg);
-            border-radius: 2px;
-            transition: all 200ms ease;
-        }
-        @media (max-width: 767px) { .nav__hamburger { display: flex; } }
-
-        .nav__drawer {
-            display: none;
-            position: fixed;
-            top: var(--nav-h); left: 0; right: 0;
-            background: var(--text);
-            padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 2rem;
-            z-index: 99;
-        }
-        .nav__drawer.open { display: block; }
-        .nav__drawer ul { list-style: none; display: flex; flex-direction: column; }
-        .nav__drawer a {
-            color: var(--bg);
-            font-size: 1rem;
-            font-weight: 500;
-            display: block;
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--on-dark-line);
-        }
-
-        /* ============================================================
-           HERO — asymmetric split (60/40)
-           ============================================================ */
-        .hero {
-            min-height: 100dvh;
-            padding-top: var(--nav-h);
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-        @media (min-width: 768px) {
-            .hero { grid-template-columns: 58% 42%; }
-        }
-
-        .hero__content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
-        }
-
-        .hero__eyebrow {
-            font-size: var(--fs-2xs);
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1.25rem;
-        }
-
-        .hero__headline {
-            font-family: var(--font-h);
-            font-size: var(--fs-h1);
-            line-height: 1.08; /* italic descenders need clearance */
-            letter-spacing: -0.025em;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.05em;
-        }
-        .hero__headline em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .hero__tagline {
-            font-size: clamp(1rem, 1.4vw, 1.125rem);
-            line-height: 1.65;
-            color: var(--ink-muted);
-            max-width: 38ch;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--text);
-            color: var(--bg);
-            padding: 0.9rem 2rem;
-            border-radius: var(--r);
-            font-size: var(--fs-base);
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 200ms ease, transform 200ms ease;
-            align-self: flex-start;
-        }
-        .hero__cta svg { transition: transform 200ms ease; }
-        .hero__cta:hover { background: var(--accent); transform: translateY(-2px); }
-        .hero__cta:hover svg { transform: translateX(3px); }
-        .hero__cta:active { transform: translateY(0); }
-        /* hero load cascade — placed after .hero__cta so its `transition` shorthand doesn't reset these delays */
-        .hero__eyebrow  { transition-delay: 0.05s; }
-        .hero__headline { transition-delay: 0.15s; }
-        .hero__tagline  { transition-delay: 0.25s; }
-        .hero__cta      { transition-delay: 0.35s; }
-        .hero__cta:hover, .hero__cta:active { transition-delay: 0s; }
-
-        .hero__image {
-            position: relative;
-            overflow: hidden;
-            min-height: 380px;
-            background: var(--accent);
-        }
-        @media (min-width: 768px) { .hero__image { min-height: unset; } }
-        .hero__image img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ============================================================
-           MENU — editorial list (not cards)
-           ============================================================ */
-        .menu {
-            background: var(--surf);
-            padding: var(--sec-pad) var(--gutter);
-        }
-        .menu__header {
-            margin-bottom: clamp(2.5rem, 5vw, 4rem);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .menu__heading {
-            font-family: var(--font-h);
-            font-size: var(--fs-h2);
-            line-height: 1.05;
-            letter-spacing: -0.025em;
-        }
-        .menu__subheading {
-            font-size: var(--fs-base);
-            color: var(--ink-muted);
-        }
-        .menu__list { list-style: none; }
-
-        .menu__item {
-            display: grid;
-            grid-template-columns: 2.25rem 1fr auto;
-            align-items: center;
-            gap: 1.25rem;
-            padding: 1.5rem 0;
-            border-top: 1px solid var(--line);
-            cursor: default;
-        }
-        .menu__item:last-child {
-            border-bottom: 1px solid var(--line);
-        }
-        @media (min-width: 640px) {
-            .menu__item { grid-template-columns: 2.75rem 1fr 80px auto; gap: 1.75rem; }
-        }
-
-        .menu__num {
-            font-size: var(--fs-2xs);
-            font-weight: 700;
-            color: var(--ink-faint);
-            letter-spacing: 0.05em;
-        }
-        .menu__info { display: flex; flex-direction: column; gap: 0.2rem; }
-        .menu__name {
-            font-family: var(--font-h);
-            font-size: var(--fs-lg);
-            font-weight: 600;
+        h1, h2, h3, h4, .font-heading {
+            font-family: var(--font-heading);
+            font-weight: 400;
             line-height: 1.2;
         }
-        .menu__desc {
-            font-size: var(--fs-sm);
-            color: var(--ink-muted);
-            line-height: 1.4;
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Layout Utility */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .section { padding: 100px 0; }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-color);
         }
 
-        .menu__img-wrap {
-            display: none;
-            width: 80px; height: 80px;
-            border-radius: calc(var(--r) * 2);
-            overflow: hidden;
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
         }
-        @media (min-width: 640px) { .menu__img-wrap { display: block; } }
-        .menu__img-wrap img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 400ms ease;
-        }
-        .menu__item:hover .menu__img-wrap img { transform: scale(1.08); }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
-        .menu__price {
-            font-family: var(--font-h);
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: 700;
-            white-space: nowrap;
+        /* Navbar */
+        #navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1.5rem 0;
+            z-index: 100;
+            transition: all 0.4s ease;
+            color: #ffffff; /* Default light for hero overlay */
+        }
+        #navbar.scrolled {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* ============================================================
-           ABOUT — dark split panel
-           ============================================================ */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-        @media (min-width: 768px) { .about { grid-template-columns: 1fr 1fr; } }
-
-        .about__image {
+        /* Hero */
+        #hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            min-height: 420px;
-            overflow: hidden;
-            background: var(--accent);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
         }
-        @media (min-width: 768px) { .about__image { min-height: 560px; } }
-        .about__image img {
+        #hero::before {
+            content: '';
             position: absolute;
             inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            max-width: 800px;
+            padding: 0 5%;
+        }
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
         }
 
-        .about__content {
-            background: var(--text);
-            color: var(--bg);
-            padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-image-wrapper { position: relative; }
+        .about-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px; bottom: 20px; left: 20px;
+            border: 1px solid var(--accent-color);
+            z-index: -1;
+        }
+        .about-image { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+        .about-text { font-size: 1.1rem; color: var(--text-color); opacity: 0.85; }
+        .about-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+
+        /* Menu */
+        #menu { background-color: var(--surface-color); }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem 4rem;
+        }
+        .menu-item {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 1.75rem;
-        }
-        .about__year {
-            font-size: var(--fs-2xs);
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--on-dark-faint);
-        }
-        .about__heading {
-            font-family: var(--font-h);
-            font-size: var(--fs-h3);
-            line-height: 1.15;
-            letter-spacing: -0.015em;
-        }
-        .about__heading em {
-            font-style: italic;
-            color: var(--surf);
-        }
-        .about__body {
-            font-size: var(--fs-base);
-            line-height: 1.7;
-            color: var(--on-dark-muted);
-            max-width: 38ch;
-        }
-
-        /* ============================================================
-           GALLERY — mosaic grid
-           ============================================================ */
-        .gallery {
-            padding: var(--sec-pad) var(--gutter);
-        }
-        .gallery__header { margin-bottom: clamp(1.75rem, 4vw, 3rem); }
-        .gallery__heading {
-            font-family: var(--font-h);
-            font-size: var(--fs-h2);
-            line-height: 1.05;
-            letter-spacing: -0.025em;
-        }
-
-        .gallery__grid {
-            display: grid;
             gap: 0.5rem;
-            grid-template-columns: 1fr 1fr;
         }
-        @media (min-width: 768px) {
-            .gallery__grid {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: 280px 280px 220px;
-            }
-            /* tile 1: wide hero tile; tile 6: full-width banner row — 6 tiles, no empty cells */
-            .gallery__tile:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
-            .gallery__tile:nth-child(6) { grid-column: 1 / -1; }
-        }
-
-        .gallery__tile {
-            overflow: hidden;
-            border-radius: var(--r);
-            background: var(--surf);
-        }
-        .gallery__tile img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-            display: block;
-        }
-        .gallery__tile:hover img { transform: scale(1.05); }
-        @media (min-width: 768px) {
-            .gallery__tile img { height: 100%; }
-        }
-
-        /* ============================================================
-           VISIT — hours + location
-           ============================================================ */
-        .visit {
-            background: var(--surf);
-            padding: var(--sec-pad) var(--gutter);
-        }
-        .visit__inner {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: clamp(2.5rem, 6vw, 5rem);
-        }
-        @media (min-width: 768px) { .visit__inner { grid-template-columns: 1fr 1fr; } }
-
-        .visit__hours-heading {
-            font-family: var(--font-h);
-            font-size: var(--fs-h3);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-        .visit__hours-list { list-style: none; }
-        .visit__hours-row {
+        .menu-item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 1rem;
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
         }
-        .visit__hours-list .visit__hours-row:first-child {
-            border-top: 1px solid var(--line);
-        }
-        .visit__day  { font-weight: 600; font-size: var(--fs-sm); }
-        .visit__time { font-size: var(--fs-sm); color: var(--ink-muted); }
+        .menu-item-name { font-size: 1.3rem; }
+        .menu-item-price { font-weight: 500; color: var(--accent-color); font-size: 1.1rem;}
+        .menu-item-desc { font-size: 0.95rem; opacity: 0.7; }
 
-        .visit__map { display: flex; flex-direction: column; gap: 1.25rem; }
-        .visit__address {
-            font-size: var(--fs-base);
-            line-height: 1.7;
-            color: var(--ink-muted);
-        }
-        .visit__map-frame {
-            border-radius: calc(var(--r) * 3);
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-        }
-        .visit__map-frame iframe {
-            width: 100%; height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .footer {
-            background: var(--text);
-            color: var(--bg);
-            padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
-        }
-        .footer__inner {
+        /* Gallery */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
         }
-        @media (min-width: 768px) {
-            .footer__inner { grid-template-columns: 2fr 1fr 1fr; align-items: start; }
+        .gallery-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background-color: var(--surface-color);
         }
-        .footer__brand {
-            font-family: var(--font-h);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--bg);
-            margin-bottom: 0.625rem;
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
         }
-        .footer__tagline {
-            font-size: var(--fs-sm);
-            color: var(--on-dark-faint);
-            line-height: 1.6;
-            max-width: 26ch;
-        }
-        .footer__col-label {
-            font-size: var(--fs-2xs);
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--on-dark-faint);
-            margin-bottom: 0.875rem;
-        }
-        .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-        .footer__links a {
-            font-size: var(--fs-sm);
-            color: var(--on-dark-muted);
-            transition: color 180ms ease;
-        }
-        .footer__links a:hover { color: var(--bg); }
+        .gallery-item:hover img { transform: scale(1.05); }
 
-        .footer__social { display: flex; gap: 0.75rem; margin-top: 0.625rem; }
-        .footer__social a {
+        /* Location & Hours */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background-color: var(--surface-color);
+        }
+        .location-content { padding: 4rem 10%; display: flex; flex-direction: column; justify-content: center; }
+        .map-container { width: 100%; height: 100%; min-height: 400px; }
+        .hours-list { margin: 2rem 0; border-top: 1px solid var(--border-color); }
+        .hour-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px; height: 40px;
-            border-radius: var(--r);
-            border: 1px solid var(--on-dark-line);
-            color: var(--on-dark-muted);
-            transition: all 180ms ease;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
         }
-        .footer__social a:hover {
-            border-color: var(--on-dark-muted);
-            color: var(--bg);
-        }
+        .hour-day { font-weight: 500; }
+        .contact-details { margin-top: 1rem; }
+        .contact-details a, .contact-details p { display: block; margin-bottom: 0.5rem; opacity: 0.8; }
 
-        .footer__divider {
-            border: none;
-            border-top: 1px solid var(--on-dark-line);
-            margin: 2rem auto 1.25rem;
-            max-width: 1200px;
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 4rem 0 2rem;
+            text-align: center;
         }
-        .footer__copy {
-            font-size: var(--fs-xs);
-            color: var(--on-dark-faint);
-            max-width: 1200px;
-            margin: 0 auto;
-            display: block;
+        .footer-socials { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-socials a { font-family: var(--font-heading); font-style: italic; font-size: 1.2rem; transition: color 0.3s ease; }
+        .footer-socials a:hover { color: var(--accent-color); }
+        .footer-copy { font-size: 0.85rem; opacity: 0.6; }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .about-grid, .location-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-image-wrapper::after { display: none; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .location-content { padding: 3rem 5%; }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .section { padding: 60px 0; }
         }
     </style>
+
+
+
+
+
+<style id="premium-layer">
+    :root {
+        --px-accent-rgb: 217,91,67;
+        --px-text-rgb: 44,61,46;
+        --px-bg-rgb: 250,247,242;
+        --px-surface-rgb: 239,236,230;
+        --px-border-rgb: 214,210,201;
+    }
+    #px-shader-canvas {
+        position: absolute; inset: 0; z-index: 1;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        mix-blend-mode: overlay; opacity: 0.35;
+    }
+    .px-grain {
+        position: fixed; inset: 0; z-index: 8999; transform: translate3d(0,0,0); backface-visibility: hidden; will-change: transform;
+        pointer-events: none; opacity: 0.022;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 256px 256px;
+    }
+    .px-progress {
+        position: fixed; top: 0; left: 0; height: 3px;
+        background: var(--accent-color); z-index: 10000;
+        width: 0%; transition: width 0.06s linear; transform: translate3d(0,0,0); will-change: width;
+        border-radius: 0 2px 2px 0;
+        box-shadow: 0 0 10px rgba(var(--px-accent-rgb), 0.3);
+    }
+    .px-card-lift {
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (hover: hover) {
+        .px-card-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 36px rgba(var(--px-text-rgb), 0.06);
+        }
+    }
+    .px-magnetic { transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1); }
+    .px-img-zoom { overflow: hidden; }
+    .px-img-zoom img { transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+    @media (hover: hover) { .px-img-zoom:hover img { transform: scale(1.06); } }
+    .px-ripple { position: relative; overflow: hidden; }
+    .px-ripple::after {
+        content: ''; position: absolute; inset: 0;
+        background: radial-gradient(circle at center, rgba(var(--px-accent-rgb), 0.1) 0%, transparent 70%);
+        opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .px-ripple:active::after { opacity: 1; transition: opacity 0s; }
+
+    /* Mobile Dock */
+    .px-dock {
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000;
+        display: flex; justify-content: space-around; align-items: center;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 8px));
+        background: rgba(var(--px-bg-rgb), 0.88);
+        backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+        border-top: 1px solid rgba(var(--px-accent-rgb), 0.12);
+        transform: translateY(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 -4px 28px rgba(0,0,0,0.04);
+    }
+    .px-dock.px-dock-visible { transform: translateY(0); }
+    .px-dock-btn {
+        display: flex; flex-direction: column; align-items: center; gap: 3px;
+        font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.4px; color: var(--text-color);
+        padding: 7px 10px; border-radius: 12px;
+        transition: all 0.16s ease; text-decoration: none; min-width: 50px;
+    }
+    .px-dock-btn:active { background: rgba(var(--px-accent-rgb), 0.09); transform: scale(0.95); }
+    .px-dock-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+    .px-dock-primary {
+        background: var(--accent-color) !important; color: #fff !important;
+        border-radius: 22px !important; padding: 9px 22px !important;
+        font-size: 0.7rem !important;
+        box-shadow: 0 4px 14px rgba(var(--px-accent-rgb), 0.28);
+    }
+
+    /* Bottom Sheet */
+    .px-sheet-overlay {
+        position: fixed; inset: 0; z-index: 9500;
+        background: rgba(0,0,0,0.4); opacity: 0;
+        pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .px-sheet-overlay.px-open { opacity: 1; pointer-events: auto; }
+    .px-sheet {
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 9501;
+        background: var(--surface-color); border-radius: 20px 20px 0 0;
+        padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 8px));
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        max-height: 70vh; overflow-y: auto;
+        box-shadow: 0 -8px 40px rgba(0,0,0,0.1);
+    }
+    .px-sheet.px-open { transform: translateY(0); }
+    .px-sheet-handle { width: 36px; height: 4px; background: var(--border-color); border-radius: 2px; margin: 0 auto 18px; }
+    .px-sheet a {
+        display: block; padding: 15px 18px; font-size: 1.05rem; font-weight: 500;
+        color: var(--text-color); text-decoration: none; border-radius: 10px;
+        transition: background 0.16s ease; margin-bottom: 2px;
+    }
+    .px-sheet a:active { background: rgba(var(--px-accent-rgb), 0.07); }
+
+    /* Swipeable Gallery (mobile) */
+    @media (max-width: 600px) {
+        .px-gallery-swipe {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; gap: 10px;
+            padding: 0 5% 14px; scrollbar-width: none;
+        }
+        .px-gallery-swipe::-webkit-scrollbar { display: none; }
+        .px-gallery-swipe > * { flex: 0 0 84vw; scroll-snap-align: center; }
+    }
+    /* Apply dock-aware padding to footer (not body) to avoid unstyled strips */
+    footer.px-has-dock { padding-bottom: calc(72px + env(safe-area-inset-bottom, 8px) + 3rem); }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+        .px-dock { transform: translateY(0) !important; }
+        #px-shader-canvas { display: none; }
+        .fade-up { opacity: 1 !important; transform: none !important; }
+    }
+    .px-dock-btn:focus-visible, .px-sheet a:focus-visible {
+        outline: 2px solid var(--accent-color); outline-offset: 2px;
+    }
+
+    /* Mobile: reduce grain to near-zero for performance */
+    @media (max-width: 768px) {
+        .px-grain { opacity: 0.008; }
+    }
+</style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="nav" aria-label="Main navigation">
-        <a class="nav__brand" href="#" id="nav-brand">Overdoughs Cafe Express PITX</a>
-        <ul class="nav__links">
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#visit">Visit</a></li>
-        </ul>
-        <a class="nav__cta" href="tel:" id="nav-cta">Contact Us</a>
-        <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
-            <span></span><span></span><span></span>
-        </button>
+    <!-- DOM Structure (Dynamically injected with Data) -->
+    
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#" id="dom-nav-logo" class="nav-logo font-heading"></a>
+            <div class="nav-links"><a href="#location">Visit Us</a></div>
+        </div>
     </nav>
 
-    <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
-        <ul>
-            <li><a href="#menu"  onclick="closeDrawer()">Menu</a></li>
-            <li><a href="#about" onclick="closeDrawer()">About</a></li>
-            <li><a href="#visit" onclick="closeDrawer()">Visit Us</a></li>
-        </ul>
-    </div>
+    <header id="hero">
+        <div class="hero-content fade-up">
+            <h1 id="dom-hero-title" class="hero-title font-heading"></h1>
+            <p id="dom-hero-tagline" class="hero-tagline"></p>
+            <a href="#menu" id="dom-hero-btn" class="btn"></a>
+        </div>
+    </header>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero">
-        <div class="hero__content">
-            <p class="hero__eyebrow reveal" id="hero-eyebrow">340 reviews · Parañaque</p>
-            <h1 class="hero__headline reveal" id="hero-headline">
-                Overdoughs Cafe Express PITX<br><em>Pastry shop</em>
-            </h1>
-            <p class="hero__tagline reveal" id="hero-tagline">4.9★ rated pastry shop in Parañaque. 340 reviews.</p>
-            <a class="hero__cta reveal" href="tel:" id="hero-cta">
-                Call Now
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-                    <path d="M2.5 7.5h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-        <div class="hero__image">
-            <img src="https://placehold.co/900x1100/78350F/FEF3C7?text=%E2%80%8B" id="hero-img" alt="" aria-hidden="true" fetchpriority="high">
-        </div>
-    </section>
-
-    <!-- MENU HIGHLIGHTS -->
-    <section class="menu" id="menu" aria-label="Menu highlights">
-        <div class="menu__header reveal">
-            <h2 class="menu__heading" id="menu-heading">Our Menu</h2>
-            <p class="menu__subheading" id="menu-subheading">Popular items</p>
-        </div>
-        <ul class="menu__list" id="menu-list">
-            <!-- populated by JS from SITE_CONFIG.menu.items -->
-        </ul>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about" id="about" aria-label="About">
-        <div class="about__image">
-            <img src="https://placehold.co/800x900/D97706/FEF3C7?text=%E2%80%8B" id="about-img" alt="" aria-hidden="true">
-        </div>
-        <div class="about__content">
-            <p class="about__year reveal" id="about-year"></p>
-            <h2 class="about__heading reveal" id="about-heading">
-                About Overdoughs Cafe Express PITX<br><em>A Parañaque destination</em>
-            </h2>
-            <p class="about__body reveal" id="about-body">Overdoughs Cafe Express PITX — 340 reviews, 4.9★. A popular pastry shop in Parañaque.</p>
-        </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="gallery" id="gallery" aria-label="Gallery">
-        <div class="gallery__header reveal">
-            <h2 class="gallery__heading" id="gallery-heading">Our Space</h2>
-        </div>
-        <div class="gallery__grid" id="gallery-grid">
-            <!-- populated by JS from SITE_CONFIG.gallery.images -->
-        </div>
-    </section>
-
-    <!-- HOURS + LOCATION -->
-    <section class="visit" id="visit" aria-label="Hours and location">
-        <div class="visit__inner">
-            <div class="reveal">
-                <h2 class="visit__hours-heading" id="visit-heading">Visit Us</h2>
-                <ul class="visit__hours-list" id="hours-list">
-                    <!-- populated by JS -->
-                </ul>
+    <section id="about" class="section container">
+        <div class="about-grid">
+            <div class="about-image-wrapper fade-up">
+                <img id="dom-about-img" class="about-image" src="" alt="About Us">
             </div>
-            <div class="visit__map reveal">
-                <p class="visit__address" id="visit-address">
-                    Pitx, Parañaque, 1701 Metro Manila
-                </p>
-                <div class="visit__map-frame">
-                    <iframe
-                        id="map-iframe"
-                        title="Location map"
-                        src="https://maps.google.com/maps?q=paranaque+city+hall&output=embed"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+            <div class="fade-up">
+                <h2 id="dom-about-title" class="about-title font-heading"></h2>
+                <p id="dom-about-text" class="about-text"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section">
+        <div class="container">
+            <h2 id="dom-menu-title" class="section-title font-heading fade-up"></h2>
+            <div id="dom-menu-grid" class="menu-grid">
+                <!-- Menu items injected here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section container" style="padding-top: 50px;">
+        <div id="dom-gallery-grid" class="gallery-grid">
+            <!-- Gallery items injected here -->
+        </div>
+    </section>
+
+    <section id="location" class="section" style="padding-bottom: 0;">
+        <div class="location-grid">
+            <div class="location-content fade-up">
+                <h2 id="dom-location-title" class="about-title font-heading" style="margin-bottom: 0.5rem;"></h2>
+                <div id="dom-hours-list" class="hours-list">
+                    <!-- Hours injected here -->
+                </div>
+                <div class="contact-details">
+                    <p id="dom-address" class="font-heading" style="font-size: 1.2rem;"></p>
+                    <a id="dom-phone" href=""></a>
                 </div>
             </div>
+            <div id="dom-map" class="map-container fade-up">
+                <!-- Iframe injected here -->
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" aria-label="Footer">
-        <div class="footer__inner">
-            <div>
-                <div class="footer__brand" id="footer-brand">Overdoughs Cafe Express PITX</div>
-                <p class="footer__tagline">Good coffee and good people, every single day.</p>
+    <footer>
+        <div class="container fade-up">
+            <div class="footer-socials">
+                <a id="dom-fb" href="" target="_blank">Facebook</a>
+                <a id="dom-ig" href="" target="_blank">Instagram</a>
             </div>
-            <div>
-                <p class="footer__col-label">Contact</p>
-                <ul class="footer__links">
-                    <li><a href="tel:" id="footer-phone">+63 912 345 6789</a></li>
-                </ul>
-                <div class="footer__social">
-                    <a href="#" id="social-fb" aria-label="Facebook">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" id="social-ig" aria-label="Instagram">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="5"/>
-                            <circle cx="12" cy="12" r="4"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <p class="footer__col-label">Explore</p>
-                <ul class="footer__links">
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#visit">Visit Us</a></li>
-                </ul>
-            </div>
+            <p id="dom-footer-copy" class="footer-copy"></p>
         </div>
-        <hr class="footer__divider">
-        <span class="footer__copy" id="footer-copy">© 2026 Café. All rights reserved.</span>
     </footer>
 
+
+    <!-- SYSTEM SCRIPTS (Core Rendering Engine) -->
     <script>
-        /* ============================================================
-           HELPERS
-           ============================================================ */
-        function isToken(v) { return !v || String(v).indexOf('{{') === 0; }
-        function setText(id, val) {
-            if (isToken(val)) return;
-            var el = document.getElementById(id);
-            if (el) el.textContent = val;
-        }
-        function setAttr(id, attr, val) {
-            if (isToken(val)) return;
-            var el = document.getElementById(id);
-            if (el) el.setAttribute(attr, val);
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Apply CSS Variables from Config
+            const root = document.documentElement;
+            root.style.setProperty('--bg-color', SITE_CONFIG.theme.colors.background);
+            root.style.setProperty('--text-color', SITE_CONFIG.theme.colors.text);
+            root.style.setProperty('--accent-color', SITE_CONFIG.theme.colors.accent);
+            root.style.setProperty('--surface-color', SITE_CONFIG.theme.colors.surface);
+            root.style.setProperty('--border-color', SITE_CONFIG.theme.colors.border);
+            root.style.setProperty('--font-heading', SITE_CONFIG.theme.fonts.heading);
+            root.style.setProperty('--font-body', SITE_CONFIG.theme.fonts.body);
 
-        /* ============================================================
-           APPLY SITE_CONFIG
-           ============================================================ */
-        (function () {
-            var cfg = SITE_CONFIG;
-            var c = cfg.theme.colors;
-            var f = cfg.theme.fonts;
-            var d = document.documentElement;
-
-            // CSS vars
-            if (!isToken(c.background)) d.style.setProperty('--bg',     c.background);
-            if (!isToken(c.text))       d.style.setProperty('--text',   c.text);
-            if (!isToken(c.accent))     d.style.setProperty('--accent', c.accent);
-            if (!isToken(c.surface))    d.style.setProperty('--surf',   c.surface);
-            if (!isToken(c.border))     d.style.setProperty('--bord',   c.border);
-            if (!isToken(f.heading))    d.style.setProperty('--font-h', f.heading);
-            if (!isToken(f.body))       d.style.setProperty('--font-b', f.body);
-
-            // Nav
-            var brand = isToken(cfg.nav.brandName) ? 'Café' : cfg.nav.brandName;
-            setText('nav-brand', cfg.nav.brandName);
-            if (!isToken(cfg.nav.cta))     setText('nav-cta', cfg.nav.cta);
-            if (!isToken(cfg.nav.ctaLink)) setAttr('nav-cta', 'href', cfg.nav.ctaLink);
-
+            // 2. Populate Standard Content
+            document.title = `${SITE_CONFIG.hero.businessName} | Local Cafe`;
+            document.getElementById('dom-nav-logo').textContent = SITE_CONFIG.hero.businessName;
+            
             // Hero
-            setText('hero-eyebrow', cfg.hero.eyebrow);
-            setText('hero-tagline', cfg.hero.tagline);
-            if (!isToken(cfg.hero.ctaText)) {
-                var ctaEl = document.getElementById('hero-cta');
-                if (ctaEl) {
-                    // preserve the SVG arrow
-                    var svg = ctaEl.querySelector('svg');
-                    ctaEl.textContent = cfg.hero.ctaText + ' ';
-                    if (svg) ctaEl.appendChild(svg);
-                }
-            }
-            if (!isToken(cfg.hero.ctaLink)) setAttr('hero-cta', 'href', cfg.hero.ctaLink);
-            if (!isToken(cfg.hero.headlineA)) {
-                var hl = document.getElementById('hero-headline');
-                if (hl) {
-                    var b = isToken(cfg.hero.headlineB) ? '' : cfg.hero.headlineB;
-                    hl.innerHTML = cfg.hero.headlineA + (b ? '<br><em>' + b + '</em>' : '');
-                }
-            }
-            if (!isToken(cfg.hero.image)) {
-                var hi = document.getElementById('hero-img');
-                if (hi) { hi.src = cfg.hero.image; hi.alt = brand + ' interior'; hi.removeAttribute('aria-hidden'); }
-            }
-
-            // Menu
-            setText('menu-heading',    cfg.menu.heading);
-            setText('menu-subheading', cfg.menu.subheading);
-            var menuList = document.getElementById('menu-list');
-            var defaultItems = [
-                { name: 'Kape Barako',     description: 'Bold Batangas blend, no frills.',       price: '₱120' },
-                { name: 'Kape Latte',      description: 'Smooth and creamy, just right.',        price: '₱145' },
-                { name: 'Matcha Latte',    description: 'Japanese matcha, locally brewed.',      price: '₱160' },
-                { name: 'Mocha Champorado',description: 'Filipino chocolate rice, coffee twist.',price: '₱155' }
-            ];
-            var items = cfg.menu.items.filter(function(it) { return !isToken(it.name); });
-            if (!items.length) items = defaultItems;
-            items.slice(0, 4).forEach(function (item, i) {
-                var li  = document.createElement('li');
-                li.className = 'menu__item reveal';
-                li.style.transitionDelay = (i * 0.06) + 's';  // stagger cascade
-                var num = ('0' + (i + 1)).slice(-2);
-                var src = (!item.image || isToken(item.image))
-                    ? 'https://placehold.co/160x160/78350F/FEF3C7?text=%E2%80%8B'
-                    : item.image;
-                li.innerHTML =
-                    '<span class="menu__num">' + num + '</span>' +
-                    '<div class="menu__info">' +
-                        '<span class="menu__name">' + item.name + '</span>' +
-                        (item.description && !isToken(item.description)
-                            ? '<span class="menu__desc">' + item.description + '</span>' : '') +
-                    '</div>' +
-                    '<div class="menu__img-wrap">' +
-                        '<img src="' + src + '" alt="' + item.name + '" loading="lazy">' +
-                    '</div>' +
-                    '<span class="menu__price">' + (isToken(item.price) ? '' : item.price) + '</span>';
-                menuList.appendChild(li);
-            });
+            const heroSection = document.getElementById('hero');
+            heroSection.style.backgroundImage = `url('${SITE_CONFIG.hero.backgroundImage}')`;
+            document.getElementById('dom-hero-title').textContent = SITE_CONFIG.hero.businessName;
+            document.getElementById('dom-hero-tagline').textContent = SITE_CONFIG.hero.tagline;
+            document.getElementById('dom-hero-btn').textContent = SITE_CONFIG.hero.buttonText;
 
             // About
-            if (!isToken(cfg.about.year)) setText('about-year', 'Since ' + cfg.about.year);
-            setText('about-body', cfg.about.body);
-            if (!isToken(cfg.about.headlineA)) {
-                var ah = document.getElementById('about-heading');
-                if (ah) {
-                    var ab = isToken(cfg.about.headlineB) ? '' : cfg.about.headlineB;
-                    ah.innerHTML = cfg.about.headlineA + (ab ? '<br><em>' + ab + '</em>' : '');
-                }
-            }
-            if (!isToken(cfg.about.image)) {
-                var ai = document.getElementById('about-img');
-                if (ai) { ai.src = cfg.about.image; ai.alt = 'Inside ' + brand; ai.removeAttribute('aria-hidden'); }
-            }
+            document.getElementById('dom-about-title').textContent = SITE_CONFIG.about.title;
+            document.getElementById('dom-about-text').textContent = SITE_CONFIG.about.text;
+            document.getElementById('dom-about-img').src = SITE_CONFIG.about.image;
+
+            // Menu
+            document.getElementById('dom-menu-title').textContent = SITE_CONFIG.menuTitle;
+            const menuGrid = document.getElementById('dom-menu-grid');
+            SITE_CONFIG.menu.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item fade-up';
+                menuItem.innerHTML = `
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name font-heading">${item.name}</h3>
+                        <span class="menu-item-price">${item.price}</span>
+                    </div>
+                    <p class="menu-item-desc">${item.desc}</p>
+                `;
+                menuGrid.appendChild(menuItem);
+            });
 
             // Gallery
-            setText('gallery-heading', cfg.gallery.heading);
-            var grid = document.getElementById('gallery-grid');
-            var galColors = ['78350F/FEF3C7','451A03/FDE68A','D97706/451A03','78350F/FDE68A','451A03/FEF3C7','D97706/FEF3C7'];
-            var galSizes  = ['800x280','400x280','400x280','400x280','400x280','400x280'];
-            cfg.gallery.images.forEach(function (src, i) {
-                var tile = document.createElement('div');
-                tile.className = 'gallery__tile reveal';
-                tile.style.transitionDelay = (i * 0.05) + 's';  // stagger cascade
-                var imgSrc = isToken(src)
-                    ? 'https://placehold.co/' + galSizes[i] + '/' + galColors[i] + '?text=%E2%80%8B'
-                    : src;
-                tile.innerHTML = '<img src="' + imgSrc + '" alt="Gallery photo ' + (i + 1) + '" loading="lazy">';
-                grid.appendChild(tile);
+            const galleryGrid = document.getElementById('dom-gallery-grid');
+            SITE_CONFIG.gallery.forEach(imgUrl => {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'gallery-item fade-up';
+                imgContainer.innerHTML = `<img src="${imgUrl}" alt="Cafe Gallery Image">`;
+                galleryGrid.appendChild(imgContainer);
             });
 
-            // Hours
-            setText('visit-heading', cfg.hours.heading);
-            var hoursList   = document.getElementById('hours-list');
-            var defaultDays = [
-                { label: 'Mon - Fri', time: '7:00 AM - 8:00 PM' },
-                { label: 'Saturday',  time: '8:00 AM - 9:00 PM' },
-                { label: 'Sunday',    time: '9:00 AM - 6:00 PM' }
-            ];
-            var days = cfg.hours.days.filter(function(day) { return !isToken(day.label); });
-            if (!days.length) days = defaultDays;
-            days.forEach(function (day) {
-                var li = document.createElement('li');
-                li.className = 'visit__hours-row';
-                li.innerHTML =
-                    '<span class="visit__day">'  + day.label + '</span>' +
-                    '<span class="visit__time">' + (isToken(day.time) ? '' : day.time) + '</span>';
-                hoursList.appendChild(li);
+            // Location & Hours
+            document.getElementById('dom-location-title').textContent = SITE_CONFIG.locationTitle;
+            const hoursList = document.getElementById('dom-hours-list');
+            SITE_CONFIG.hours.forEach(hour => {
+                const hourEl = document.createElement('div');
+                hourEl.className = 'hour-item';
+                hourEl.innerHTML = `<span class="hour-day">${hour.day}</span><span class="hour-time">${hour.time}</span>`;
+                hoursList.appendChild(hourEl);
             });
-            if (!isToken(cfg.hours.address)) {
-                var addrEl = document.getElementById('visit-address');
-                if (addrEl) addrEl.innerHTML = cfg.hours.address.replace(',', ',<br>');
-            }
-            if (!isToken(cfg.hours.mapsEmbed)) setAttr('map-iframe', 'src', cfg.hours.mapsEmbed);
+            document.getElementById('dom-address').textContent = SITE_CONFIG.contact.address;
+            
+            const phoneEl = document.getElementById('dom-phone');
+            phoneEl.textContent = SITE_CONFIG.contact.phone;
+            phoneEl.href = `tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, '')}`; // Strip spaces for link
+            
+            document.getElementById('dom-map').innerHTML = SITE_CONFIG.contact.mapIframe;
 
             // Footer
-            setText('footer-brand', cfg.nav.brandName);
-            if (!isToken(cfg.contact.phone)) {
-                var ph = document.getElementById('footer-phone');
-                if (ph) { ph.textContent = cfg.contact.phone; ph.href = 'tel:' + cfg.contact.phone; }
-            }
-            if (!isToken(cfg.contact.facebook))  setAttr('social-fb', 'href', cfg.contact.facebook);
-            if (!isToken(cfg.contact.instagram)) setAttr('social-ig', 'href', cfg.contact.instagram);
-            setText('footer-copy', '© ' + new Date().getFullYear() + ' ' + brand + '. All rights reserved.');
+            document.getElementById('dom-fb').href = SITE_CONFIG.contact.facebook;
+            document.getElementById('dom-ig').href = SITE_CONFIG.contact.instagram;
+            document.getElementById('dom-footer-copy').textContent = `© ${new Date().getFullYear()} ${SITE_CONFIG.hero.businessName}. All rights reserved.`;
 
-            // SEO
-            var seo     = cfg.seo;
-            var city    = !isToken(seo.city)     ? seo.city     : 'Paranaque';
-            var prov    = !isToken(seo.province) ? seo.province : 'NCR';
-            var title   = !isToken(seo.templateTitle)
-                ? seo.templateTitle
-                : brand + ' | Coffee Shop in ' + city;
-            var desc    = !isToken(seo.description)
-                ? seo.description
-                : 'Visit ' + brand + ' in ' + city + ', ' + prov + '. Premium coffee brewed fresh daily.';
-            var keywords = !isToken(seo.keywords)
-                ? seo.keywords
-                : 'cafe, coffee shop, ' + city.toLowerCase() + ', kape, local coffee';
-
-            document.title = title;
-            document.querySelector('meta[name="description"]').content = desc;
-            document.querySelector('meta[name="keywords"]').content    = keywords;
-            document.querySelector('meta[property="og:title"]').content       = title;
-            document.querySelector('meta[property="og:description"]').content = desc;
-            if (!isToken(seo.image)) document.querySelector('meta[property="og:image"]').content = seo.image;
-            if (seo.url)             document.querySelector('meta[property="og:url"]').content   = seo.url;
-
-            try {
-                var ld = JSON.parse(document.getElementById('seo-jsonld').textContent);
-                ld.name = brand; ld.description = desc;
-                if (!isToken(cfg.contact.phone)) ld.telephone = cfg.contact.phone;
-                if (!isToken(seo.image)) ld.image = seo.image;
-                if (seo.url)             ld.url   = seo.url;
-                if (!isToken(cfg.hours.address)) {
-                    var parts = cfg.hours.address.split(',');
-                    ld.address.streetAddress  = (parts[0] || '').trim();
-                    ld.address.addressLocality = city;
-                    ld.address.addressRegion   = prov;
-                }
-                document.getElementById('seo-jsonld').textContent = JSON.stringify(ld, null, 2);
-            } catch (e) { /* skip on malformed JSON-LD */ }
-        })();
-
-        /* ============================================================
-           SCROLL REVEAL — IntersectionObserver
-           ============================================================ */
-        (function () {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
+            // 3. Setup Scroll Animations (Intersection Observer)
+            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        io.unobserve(entry.target);
+                        observer.unobserve(entry.target); // Only animate once
                     }
                 });
-            }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
-            document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-            // safety net: never leave content hidden (slow loads, IO edge cases)
-            setTimeout(function () {
-                document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) { el.classList.add('visible'); });
-            }, 1600);
-        })();
+            }, observerOptions);
 
-        /* ============================================================
-           MOBILE NAV
-           ============================================================ */
-        (function () {
-            var btn    = document.getElementById('hamburger');
-            var drawer = document.getElementById('nav-drawer');
-            if (!btn || !drawer) return;
-            btn.addEventListener('click', function () {
-                var open = drawer.classList.toggle('open');
-                btn.setAttribute('aria-expanded', String(open));
-                drawer.setAttribute('aria-hidden',  String(!open));
+            // Observe all elements with .fade-up
+            setTimeout(() => {
+                document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+            }, 100);
+
+            // 4. Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             });
-        })();
-
-        function closeDrawer() {
-            var drawer = document.getElementById('nav-drawer');
-            var btn    = document.getElementById('hamburger');
-            if (drawer) { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
-            if (btn)    btn.setAttribute('aria-expanded', 'false');
-        }
+        });
     </script>
+
+
+
+
+
+<script id="premium-script">
+(function() {
+    if (window.__px_init) return;
+    window.__px_init = true;
+
+    function init() {
+        var root = document.documentElement, body = document.body;
+        var cfg = window.SITE_CONFIG || {};
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        // 1. RGB from SITE_CONFIG
+        function hexToRgb(h) {
+            if (!h) return '0,0,0';
+            h = h.replace('#','');
+            if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+            var r = parseInt(h.substring(0,2), 16), g = parseInt(h.substring(2,4), 16), b = parseInt(h.substring(4,6), 16);
+            return isNaN(r) ? '0,0,0' : r+','+g+','+b;
+        }
+        var bg = (cfg.theme && cfg.theme.colors && cfg.theme.colors.background) || '';
+        var txt = (cfg.theme && cfg.theme.colors && cfg.theme.colors.text) || '';
+        var acc = (cfg.theme && cfg.theme.colors && cfg.theme.colors.accent) || '';
+        var surf = (cfg.theme && cfg.theme.colors && cfg.theme.colors.surface) || '';
+        var bord = (cfg.theme && cfg.theme.colors && cfg.theme.colors.border) || '';
+        root.style.setProperty('--px-accent-rgb', hexToRgb(acc));
+        root.style.setProperty('--px-text-rgb', hexToRgb(txt));
+        root.style.setProperty('--px-bg-rgb', hexToRgb(bg));
+        root.style.setProperty('--px-surface-rgb', hexToRgb(surf));
+        root.style.setProperty('--px-border-rgb', hexToRgb(bord));
+
+        // 2. Navbar offset helper
+        function getNavOffset() {
+            var nav = document.getElementById('navbar');
+            return nav ? nav.offsetHeight : 0;
+        }
+        function smoothScrollTo(target) {
+            if (!target) return;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - getNavOffset() - 16;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+
+        // 3. Hero Canvas Shader (desktop only, paused offscreen)
+        var heroEl = document.getElementById('hero') || document.querySelector('header');
+        var canvas = null, animId = null, shaderRunning = false;
+        function startShader() {
+            if (!heroEl || shaderRunning || isMobile) return;
+            shaderRunning = true;
+            canvas = document.createElement('canvas');
+            canvas.id = 'px-shader-canvas';
+            heroEl.style.position = heroEl.style.position || 'relative';
+            heroEl.insertBefore(canvas, heroEl.firstChild);
+            var ctx = canvas.getContext('2d'), time = 0;
+            function resize() {
+                var rect = heroEl.getBoundingClientRect();
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                canvas.style.width = rect.width + 'px';
+                canvas.style.height = rect.height + 'px';
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            }
+            resize();
+            var rgb = hexToRgb(acc).split(',').map(Number);
+            var r = rgb[0] || 217, g = rgb[1] || 91, b = rgb[2] || 67;
+            function draw() {
+                if (!shaderRunning) return;
+                time += 0.004;
+                var w = canvas.width, h = canvas.height;
+                ctx.clearRect(0, 0, w, h);
+                for (var i = 0; i < 3; i++) {
+                    var cx = w * (0.3 + 0.4 * Math.sin(time * 0.7 + i * 2.1));
+                    var cy = h * (0.3 + 0.4 * Math.cos(time * 0.6 + i * 1.8));
+                    var rad = Math.max(w, h) * (0.55 + 0.15 * Math.sin(time * 0.5 + i));
+                    var alpha = 0.06 + 0.04 * Math.sin(time + i);
+                    var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+                    grad.addColorStop(0, 'rgba('+r+','+g+','+b+','+(alpha*1.6)+')');
+                    grad.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+alpha+')');
+                    grad.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, w, h);
+                }
+                animId = requestAnimationFrame(draw);
+            }
+            draw();
+            window.addEventListener('resize', resize);
+        }
+        function stopShader() {
+            shaderRunning = false;
+            if (animId) { cancelAnimationFrame(animId); animId = null; }
+            if (canvas && canvas.parentNode) { canvas.parentNode.removeChild(canvas); canvas = null; }
+        }
+        if (!isMobile && heroEl) {
+            new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { e.isIntersecting ? startShader() : stopShader(); });
+            }, { threshold: 0.05 }).observe(heroEl);
+        }
+
+        // 4. Scroll progress
+        var progress = document.createElement('div');
+        progress.className = 'px-progress';
+        body.prepend(progress);
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var h = document.documentElement.scrollHeight - window.innerHeight;
+                    progress.style.width = (h > 0 ? Math.min((window.pageYOffset / h) * 100, 100) : 0) + '%';
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // 5. Grain
+        var grain = document.createElement('div');
+        grain.className = 'px-grain';
+        body.appendChild(grain);
+
+        // 6. Staggered fade-up delays
+        setTimeout(function() {
+            document.querySelectorAll('.fade-up').forEach(function(el, i) {
+                el.style.transitionDelay = (i % 6) * 0.06 + 's';
+            });
+        }, 200);
+
+        // 7. Smooth scroll (exclude .mobile-nav, .px-dock, .px-sheet)
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            if (link.closest('.px-dock') || link.closest('.px-sheet') || link.closest('.mobile-nav')) return;
+            link.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) { e.preventDefault(); smoothScrollTo(target); }
+            });
+        });
+
+        // 8. Mobile dock
+        if (isMobile) {
+            var hasMenu = !!document.getElementById('menu');
+            var hasPricing = !!document.getElementById('pricing');
+            var hasServices = !!document.getElementById('services');
+            var hasLocation = !!document.getElementById('location');
+            var primarySection = hasMenu ? '#menu' : (hasServices ? '#services' : (hasPricing ? '#pricing' : '#'));
+            var primaryLabel = hasMenu ? 'Menu' : (hasServices ? 'Services' : (hasPricing ? 'Prices' : 'Visit'));
+            var phone = '+63', phoneHref = 'tel:+63';
+            try { if (cfg.contact) { phone = cfg.contact.phone || phone; phoneHref = 'tel:' + phone.replace(/[^0-9+]/g, ''); } } catch(e) {}
+            var dock = document.createElement('div');
+            dock.className = 'px-dock';
+            dock.innerHTML =
+                '<a href="' + (hasLocation ? '#location' : '#') + '" class="px-dock-btn">' +
+                '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a>' +
+                '<a href="' + phoneHref + '" class="px-dock-btn">' +
+                '<svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call</a>' +
+                '<a href="' + primarySection + '" class="px-dock-btn px-dock-primary">' + primaryLabel + '</a>' +
+                '<a href="#" class="px-dock-btn" id="px-dock-share">' +
+                '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>Share</a>';
+            body.appendChild(dock);
+                        var sentinel = document.createElement('div');
+            var _heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+            var _sentTop = Math.max(_heroH * 0.55, 400);
+            sentinel.style.cssText = 'position:absolute;top:' + _sentTop + 'px;height:1px;width:1px;pointer-events:none';
+            body.appendChild(sentinel);
+            new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { if (e.isIntersecting) { dock.classList.add('px-dock-visible'); footerEl && footerEl.classList.add('px-has-dock'); } });
+            }, { threshold: 0 }).observe(sentinel);
+            var footerEl = document.querySelector('footer');
+            if (footerEl) {
+                new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) dock.classList.remove('px-dock-visible'); body.classList.remove('px-has-dock');
+                        else if (window.pageYOffset > window.innerHeight * 0.4) dock.classList.add('px-dock-visible'); footerEl && footerEl.classList.add('px-has-dock');
+                    });
+                }, { threshold: 0.05 }).observe(footerEl);
+            }
+            var shareBtn = document.getElementById('px-dock-share');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (navigator.share) { navigator.share({ title: document.title, url: location.href }).catch(function(){}); }
+                    else { navigator.clipboard.writeText(location.href).then(function() {
+                        var orig = shareBtn.innerHTML;
+                        shareBtn.innerHTML = '<span style="font-size:1.2em">' + String.fromCodePoint(0x2705) + '</span> Copied!';
+                        setTimeout(function() { shareBtn.innerHTML = orig; }, 1800);
+                    }).catch(function(){}); }
+                });
+            }
+        }
+
+        // 9. Bottom sheet (mobile only, no existing .mobile-nav)
+        if (isMobile && !document.querySelector('.mobile-nav')) {
+            var sections = [];
+            document.querySelectorAll('#navbar a[href^="#"], nav a[href^="#"]').forEach(function(a) {
+                var href = a.getAttribute('href'), text = a.textContent.trim();
+                if (href && text && href !== '#' && !sections.some(function(s) { return s.href === href; })) {
+                    sections.push({ href: href, text: text });
+                }
+            });
+            if (sections.length === 0) {
+                document.querySelectorAll('section[id], header[id]').forEach(function(sec) {
+                    var id = sec.id, h2 = sec.querySelector('h2');
+                    var text = h2 ? h2.textContent.trim() : id.charAt(0).toUpperCase() + id.slice(1);
+                    if (id && text) sections.push({ href: '#' + id, text: text });
+                });
+            }
+            if (sections.length > 0) {
+                var overlay = document.createElement('div');
+                overlay.className = 'px-sheet-overlay';
+                body.appendChild(overlay);
+                var sheet = document.createElement('div');
+                sheet.className = 'px-sheet';
+                sheet.innerHTML = '<div class="px-sheet-handle"></div>';
+                sections.forEach(function(s) { sheet.innerHTML += '<a href="' + s.href + '">' + s.text + '</a>'; });
+                body.appendChild(sheet);
+                var _pxScrollY = 0;
+                function openSheet() { _pxScrollY = window.pageYOffset; overlay.classList.add('px-open'); sheet.classList.add('px-open'); body.style.overflow = 'hidden'; body.style.position = 'fixed'; body.style.top = '-' + _pxScrollY + 'px'; body.style.width = '100%'; }
+                function closeSheet() { overlay.classList.remove('px-open'); sheet.classList.remove('px-open'); body.style.overflow = ''; body.style.position = ''; body.style.width = ''; body.style.top = ''; window.scrollTo(0, _pxScrollY); }
+                overlay.addEventListener('click', closeSheet);
+                sheet.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function(e) {
+                        closeSheet();
+                        var target = document.querySelector(this.getAttribute('href'));
+                        if (target) { e.preventDefault(); smoothScrollTo(target); }
+                    });
+                });
+                var burger = document.getElementById('menu-burger') || document.querySelector('.menu-toggle');
+                if (burger) {
+                    burger.addEventListener('click', function(e) {
+                        e.preventDefault(); e.stopPropagation();
+                        sheet.classList.contains('px-open') ? closeSheet() : openSheet();
+                    });
+                }
+            }
+        }
+
+        // 10. Magnetic buttons (desktop)
+        if (window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.btn:not(.px-dock-primary)').forEach(function(btn) {
+                if (btn.closest('.px-dock')) return;
+                btn.classList.add('px-magnetic');
+                btn.addEventListener('mousemove', function(e) {
+                    var rect = btn.getBoundingClientRect();
+                    btn.style.transform = 'translate(' + ((e.clientX - rect.left - rect.width/2) * 0.13) + 'px, ' + ((e.clientY - rect.top - rect.height/2) * 0.13) + 'px)';
+                });
+                btn.addEventListener('mouseleave', function() { btn.style.transform = 'translate(0, 0)'; });
+            });
+        }
+
+        // 11. Card lift, image zoom, ripple
+        document.querySelectorAll('[class*="-card"]:not(.px-card-lift), .pricing-row:not(.px-card-lift)').forEach(function(c) { c.classList.add('px-card-lift'); });
+        document.querySelectorAll('.gallery-item:not(.px-img-zoom), .about-image-wrapper:not(.px-img-zoom), [class*="image-box"]:not(.px-img-zoom)').forEach(function(el) { el.classList.add('px-img-zoom'); });
+        document.querySelectorAll('.menu-item, [class*="service-card"]').forEach(function(el) { el.classList.add('px-ripple'); });
+
+        // 12. Swipeable gallery (mobile)
+        if (isMobile) {
+            var galleryGrid = document.getElementById('dom-gallery-grid') || document.querySelector('.gallery-grid');
+            if (galleryGrid && galleryGrid.children.length > 2) galleryGrid.classList.add('px-gallery-swipe');
+        }
+    }
+
+        // Force :active state recognition on mobile (iOS/Android quirk)
+    document.addEventListener('touchstart', function() {}, {passive: true});
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(init, 200); });
+    } else { setTimeout(init, 200); }
+})();
+</script>
 </body>
 </html>
